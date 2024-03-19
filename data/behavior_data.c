@@ -6077,5 +6077,40 @@ const BehaviorScript bhvIntroScene[] = {
         CALL_NATIVE(bhv_intro_scene_loop),
     END_LOOP(),
 };
-
-
+// NEW OBJECTS START HERE
+const BehaviorScript bhvSmallSnake[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_SILHOUETTE)), //! Silhouette doesn't show up in-game, due to combiner modes.
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 50, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_small_snake_loop),
+    END_LOOP(),
+};
+const BehaviorScript bhvLaunchBarrel[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO)),
+    SET_INTERACT_TYPE(INTERACT_DAMAGE),
+    SET_HITBOX(50, 50),
+    //SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 50, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_launch_barrel_loop),
+    END_LOOP(),
+};
+// Falling Leaf Spawner
+const BehaviorScript bhvFallingLeaves[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_falling_leaves_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_falling_leaves_loop),
+    END_LOOP(),
+};
+// The individual leaves spawned by the spawner
+const BehaviorScript bhvSingleFallingLeaf[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    //SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ -90, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_single_falling_leaf),
+    END_LOOP(),
+};

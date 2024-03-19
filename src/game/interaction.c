@@ -89,7 +89,7 @@ static struct InteractionHandler sInteractionHandlers[] = {
     { INTERACT_HOOT,           interact_hoot },
     { INTERACT_BREAKABLE,      interact_breakable },
     { INTERACT_KOOPA,          interact_bounce_top },
-    { INTERACT_KOOPA_SHELL,    interact_koopa_shell },
+    { INTERACT_KOOPA_SHELL,    interact_koopa_shell }, // USING KOOPA SHELL FOR CAR
     { INTERACT_SPINY_WALKING,  interact_spiny_walking },
     { INTERACT_CAP,            interact_cap },
     { INTERACT_GRABBABLE,      interact_grabbable },

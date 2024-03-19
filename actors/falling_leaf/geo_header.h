@@ -1,0 +1,10 @@
+extern const GeoLayout falling_leaf_geo[];
+extern Lights1 falling_leaf_f3dlite_material_004_lights;
+extern u8 falling_leaf_tealeaf_ci4[];
+extern u8 falling_leaf_tealeaf_pal_rgba16[];
+extern Vtx falling_leaf_leafobject_mesh_layer_5_vtx_cull[8];
+extern Vtx falling_leaf_leafobject_mesh_layer_5_vtx_0[20];
+extern Gfx falling_leaf_leafobject_mesh_layer_5_tri_0[];
+extern Gfx mat_falling_leaf_f3dlite_material_004[];
+extern Gfx mat_revert_falling_leaf_f3dlite_material_004[];
+extern Gfx falling_leaf_leafobject_mesh_layer_5[];

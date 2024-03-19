@@ -331,4 +331,8 @@ extern const Gfx white_particle_small_dl_end[];
 extern const Gfx white_particle_small_dl[];
 extern const Gfx white_particle_small_unused_dl[];
 
+#include "launch_barrel/geo_header.h"
+
+#include "falling_leaf/geo_header.h"
+
 #endif

@@ -16,3 +16,6 @@
 #include "water_splash/geo.inc.c"
 #include "sparkle_animation/geo.inc.c"
 #include "mario/geo.inc.c"
+
+#include "launch_barrel/geo.inc.c"
+#include "falling_leaf/geo.inc.c"

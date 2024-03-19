@@ -550,6 +550,13 @@ void bhv_intro_scene_loop(void);
 void bhv_dust_smoke_loop(void);
 void bhv_yoshi_loop(void);
 void bhv_volcano_trap_loop(void);
+//NEW ACTIONS HERE
+void bhv_small_snake_loop(void);
+void bhv_launch_barrel_init();
+void bhv_launch_barrel_loop(void);
+void bhv_falling_leaves_init();
+void bhv_falling_leaves_loop();
+void bhv_single_falling_leaf();
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 
