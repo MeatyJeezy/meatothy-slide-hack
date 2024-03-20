@@ -3,6 +3,9 @@ void bhv_falling_leaves_init() {
 }
 
 void bhv_single_falling_leaf() {
+    // if (o->oDistanceToMario > 4000.0f) { // oh no im gonna OPTIMIZE AAAAA IM OPTIMIZING
+    //     obj_mark_for_deletion(o);
+    // }
     // Apply random spin, have it drift a preset direction
     if (o->oTimer == 0) {
         o->oVelX = 10 + (random_u16() %10);
@@ -14,7 +17,7 @@ void bhv_single_falling_leaf() {
         o->oAngleVelYaw = 162 + (random_u16() %60);
     }
     // After x frames, start fade out
-    if (o->oTimer++ > 240) {
+    if (o->oTimer++ > 240 || o->oDistanceToMario > 4000.0f) {
         //After fading out all the way disable the leaf
         if ((o->oOpacity -= 6) <= 1) {
             obj_mark_for_deletion(o);
@@ -39,6 +42,13 @@ void bhv_single_falling_leaf() {
     else if (o->oVelY > -11) {
         o->oVelY -= 1;
     }
+    // cant see them when they too far away.
+    // if(o->oDistanceToMario > 4000) {
+    //     cur_obj_disable_rendering();
+    // }
+    // else {
+    //     cur_obj_enable_rendering();
+    // }
     // Move using above vel and angle vels
     cur_obj_move_using_vel();
     cur_obj_rotate_face_angle_using_vel();
@@ -47,10 +57,14 @@ void bhv_single_falling_leaf() {
 //TODO: BehParam2ndByte determines what kind of leaf it is. Possible variants: regular green, autumn yellow, sakura pink.
 void bhv_falling_leaves_loop() {
     // spawn leaves and spin them at whatever angle
-    o->oAngleVelRoll = random_float();
-    if(o->oTimer++ > 60) {
-        //spawn new leaf
-        spawn_object_relative(0, 0, 0, 0, o, MODEL_FALLING_LEAF, bhvSingleFallingLeaf);
+    //o->oAngleVelRoll = random_float();
+    
+    o->oTimer += 1 + random_u16() % 3;
+    if(o->oTimer > 60) {
+        //spawn new leaf if mario is close enough
+        if (o->oDistanceToMario < 4000.0f) {
+            spawn_object_relative(0, 0, 0, 0, o, MODEL_FALLING_LEAF, bhvSingleFallingLeaf);
+        }
         o->oTimer = 0;
     }
 }

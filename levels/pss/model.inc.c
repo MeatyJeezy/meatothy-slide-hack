@@ -1,22 +1,7 @@
-Lights1 pss_dl_Material_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
 
-Lights1 pss_dl_f3dlite_material_002_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
 
-Lights1 pss_dl_f3dlite_material_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
 
-Lights1 pss_dl_windvertical_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
 
-Lights1 pss_dl_f3dlite_material_005_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
 
 Gfx pss_dl_inside_castle_textures_04000_rgba16_rgba16_aligner[] = {gsSPEndDisplayList()};
 u8 pss_dl_inside_castle_textures_04000_rgba16_rgba16[] = {
@@ -1056,7 +1041,8 @@ Gfx mat_pss_dl_Material[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsSPSetLights1(pss_dl_Material_lights),
+    gsSPLightColor(LIGHT_1, 0xffffffff),
+    gsSPLightColor(LIGHT_2, 0x7f7f7fff),
 	gsSPEndDisplayList(),
 };
 
@@ -1064,7 +1050,8 @@ Gfx mat_pss_dl_f3dlite_material_002[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsSPSetLights1(pss_dl_f3dlite_material_002_lights),
+    gsSPLightColor(LIGHT_1, 0xffffffff),
+    gsSPLightColor(LIGHT_2, 0x7f7f7fff),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, pss_dl_inside_castle_textures_04000_rgba16_rgba16),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 256),
@@ -1078,7 +1065,8 @@ Gfx mat_pss_dl_f3dlite_material[] = {
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsSPSetLights1(pss_dl_f3dlite_material_lights),
+    gsSPLightColor(LIGHT_1, 0xffffffff),
+    gsSPLightColor(LIGHT_2, 0x7f7f7fff),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pss_dl_inside_castle_textures_05000_rgba16_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 3),
@@ -1100,7 +1088,8 @@ Gfx mat_pss_dl_windvertical[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, 0, 0, 0, 0, SHADE, 0, 0, 0, 0),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsSPSetLights1(pss_dl_windvertical_lights),
+    gsSPLightColor(LIGHT_1, 0xffffffff),
+    gsSPLightColor(LIGHT_2, 0x7f7f7fff),
 	gsSPEndDisplayList(),
 };
 
@@ -1108,7 +1097,8 @@ Gfx mat_pss_dl_f3dlite_material_005[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, 0, 0, 0, 0, SHADE, 0, 0, 0, 0),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsSPSetLights1(pss_dl_f3dlite_material_005_lights),
+    gsSPLightColor(LIGHT_1, 0xffffffff),
+    gsSPLightColor(LIGHT_2, 0x7f7f7fff),
 	gsSPEndDisplayList(),
 };
 
