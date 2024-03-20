@@ -1679,8 +1679,13 @@ s32 act_shot_from_launch_barrel(struct MarioState *m) {
     if (m->area->camera->mode != CAMERA_MODE_BEHIND_MARIO) {
         m->statusForCamera->cameraEvent = CAM_EVENT_SHOT_FROM_CANNON;
     }
+    //Enable Steering
+    if (++m->actionTimer >= 5) {
+        update_air_with_turn(m);
+    }
 
     mario_set_forward_vel(m, m->forwardVel);
+    //test text func
 
     //play_sound_if_no_flag(m, SOUND_MARIO_YAHOO, MARIO_MARIO_SOUND_PLAYED);
 

@@ -35,6 +35,7 @@ void barrel_act_idle() {
 
 void barrel_act_ready(void) { // act 1 
     cur_obj_become_intangible();
+    
     //cur_obj_disable_rendering();
     // Accelerate left and right. Maybe check behparam to see if it's the moving kind or which direction to move it?
     if (o->oTimer < 60 && o->oVelX < 0x100) {

@@ -801,6 +801,7 @@ s32 act_in_launch_barrel(struct MarioState *m) {
             break;
 
         case ACT_STATE_IN_CANNON_READY:
+            print_text(120, 120, "A");
             //m->faceAngle[0] -= (s16)(m->controller->stickY * 10.0f);
             //marioObj->oMarioCannonInputYaw -= (s16)(m->controller->stickX * 10.0f);
 

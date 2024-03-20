@@ -1352,7 +1352,14 @@ void tilt_body_butt_slide(struct MarioState *m) {
 }
 
 void common_slide_action(struct MarioState *m, u32 endAction, u32 airAction, s32 animation) {
-    play_sound(SOUND_MOVING_TERRAIN_SLIDE + m->terrainSoundAddend, m->marioObj->header.gfx.cameraToObject);
+    if (m->action == ACT_SLIDE_ROLL) {
+        play_sound(SOUND_MOVING_TERRAIN_RIDING_SHELL + m->terrainSoundAddend,
+                   m->marioObj->header.gfx.cameraToObject);
+    }
+    else {
+        play_sound(SOUND_MOVING_TERRAIN_SLIDE + m->terrainSoundAddend, m->marioObj->header.gfx.cameraToObject);
+    }
+    
 
 #if ENABLE_RUMBLE
     reset_rumble_timers_slip();
@@ -1586,7 +1593,7 @@ s32 act_slide_roll(struct MarioState *m) {
 #endif
         return set_mario_action(m, ACT_JUMP, 0);
     }
-
+    //set_mario_anim_with_accel(m, MARIO_ANIM_FORWARD_SPINNING, m->forwardVel * 0x10000);
     play_mario_landing_sound_once(m, SOUND_ACTION_TERRAIN_BODY_HIT_GROUND);
 
     if (update_sliding(m, 8.0f) && is_anim_at_end(m)) {
