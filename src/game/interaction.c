@@ -1922,8 +1922,10 @@ void mario_handle_special_floors(struct MarioState *m) {
 
         switch (floorType) {
             case SURFACE_DEATH_PLANE:
-            case SURFACE_VERTICAL_WIND:
                 check_death_barrier(m);
+                break;
+            case SURFACE_VERTICAL_WIND: // CHANGED no longer deathplane mario when using vertical wind
+                //check_death_barrier(m);
                 break;
 
             case SURFACE_WARP:
