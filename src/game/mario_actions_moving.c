@@ -1578,6 +1578,26 @@ s32 act_dive_slide(struct MarioState *m) {
     common_slide_action(m, ACT_STOMACH_SLIDE_STOP, ACT_FREEFALL, MARIO_ANIM_DIVE);
     return FALSE;
 }
+// NEW SLIDE ROLL
+s32 act_slide_roll(struct MarioState *m) {
+    if ((m->input & (INPUT_A_PRESSED))) {
+#if ENABLE_RUMBLE
+        queue_rumble_data(5, 80);
+#endif
+        return set_mario_action(m, ACT_JUMP, 0);
+    }
+
+    play_mario_landing_sound_once(m, SOUND_ACTION_TERRAIN_BODY_HIT_GROUND);
+
+    if (update_sliding(m, 8.0f) && is_anim_at_end(m)) {
+        mario_set_forward_vel(m, 0.0f);
+        set_mario_action(m, ACT_BUTT_SLIDE_STOP, 0);
+    }
+    common_slide_action_with_jump(m, ACT_BUTT_SLIDE_STOP, ACT_JUMP, ACT_SHOT_FROM_LAUNCH_BARREL,
+                                               MARIO_ANIM_FORWARD_SPINNING);
+    //common_slide_action(m, ACT_STOMACH_SLIDE_STOP, ACT_FREEFALL, MARIO_ANIM_DIVE);
+    return FALSE;
+}
 
 s32 common_ground_knockback_action(struct MarioState *m, s32 animation, s32 checkFrame, s32 playLandingSound, s32 actionArg) {
     if (playLandingSound) {
@@ -1988,6 +2008,7 @@ s32 mario_execute_moving_action(struct MarioState *m) {
         case ACT_HOLD_BUTT_SLIDE:          cancel = act_hold_butt_slide(m);          break;
         case ACT_HOLD_STOMACH_SLIDE:       cancel = act_hold_stomach_slide(m);       break;
         case ACT_DIVE_SLIDE:               cancel = act_dive_slide(m);               break;
+        case ACT_SLIDE_ROLL:               cancel = act_slide_roll(m);               break;
         case ACT_MOVE_PUNCHING:            cancel = act_move_punching(m);            break;
         case ACT_CROUCH_SLIDE:             cancel = act_crouch_slide(m);             break;
         case ACT_SLIDE_KICK_SLIDE:         cancel = act_slide_kick_slide(m);         break;

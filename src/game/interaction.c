@@ -56,6 +56,7 @@ u32 interact_hoot          (struct MarioState *m, u32 interactType, struct Objec
 u32 interact_cap           (struct MarioState *m, u32 interactType, struct Object *obj);
 u32 interact_grabbable     (struct MarioState *m, u32 interactType, struct Object *obj);
 u32 interact_text          (struct MarioState *m, u32 interactType, struct Object *obj);
+u32 interact_launch_barrel (struct MarioState *m, u32 interactType, struct Object *obj);
 
 struct InteractionHandler {
     u32 interactType;
@@ -89,11 +90,12 @@ static struct InteractionHandler sInteractionHandlers[] = {
     { INTERACT_HOOT,           interact_hoot },
     { INTERACT_BREAKABLE,      interact_breakable },
     { INTERACT_KOOPA,          interact_bounce_top },
-    { INTERACT_KOOPA_SHELL,    interact_koopa_shell }, // USING KOOPA SHELL FOR CAR
+    { INTERACT_KOOPA_SHELL,    interact_koopa_shell },
     { INTERACT_SPINY_WALKING,  interact_spiny_walking },
     { INTERACT_CAP,            interact_cap },
     { INTERACT_GRABBABLE,      interact_grabbable },
     { INTERACT_TEXT,           interact_text },
+    { INTERACT_LAUNCH_BARREL,  interact_launch_barrel},
 };
 
 static u32 sForwardKnockbackActions[][3] = {
@@ -1066,6 +1068,19 @@ u32 interact_cannon_base(struct MarioState *m, UNUSED u32 interactType, struct O
         m->interactObj       = obj;
         m->usedObj           = obj;
         return set_mario_action(m, ACT_IN_CANNON, 0);
+    }
+
+    return FALSE;
+}
+
+// NEW Launch barrel, similar to cannon.
+u32 interact_launch_barrel(struct MarioState *m, UNUSED u32 interactType, struct Object *obj) {
+    if (m->action != ACT_IN_LAUNCH_BARREL) {
+        mario_stop_riding_and_holding(m);
+        obj->oInteractStatus = INT_STATUS_INTERACTED;
+        m->interactObj       = obj;
+        m->usedObj           = obj;
+        return set_mario_action(m, ACT_IN_LAUNCH_BARREL, 0);
     }
 
     return FALSE;

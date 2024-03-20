@@ -6089,7 +6089,7 @@ const BehaviorScript bhvSmallSnake[] = {
 const BehaviorScript bhvLaunchBarrel[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO)),
-    SET_INTERACT_TYPE(INTERACT_DAMAGE),
+    SET_INT(oInteractType, INTERACT_LAUNCH_BARREL),
     SET_HITBOX(50, 50),
     //SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 50, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     BEGIN_LOOP(),
@@ -6107,8 +6107,9 @@ const BehaviorScript bhvFallingLeaves[] = {
 };
 // The individual leaves spawned by the spawner
 const BehaviorScript bhvSingleFallingLeaf[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
+    BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_INT(oOpacity, 255),
     //SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ -90, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_single_falling_leaf),

@@ -1674,6 +1674,65 @@ s32 act_shot_from_cannon(struct MarioState *m) {
 #endif
     return FALSE;
 }
+// NEW Barrel Shot function, similar to cannon launch
+s32 act_shot_from_launch_barrel(struct MarioState *m) {
+    if (m->area->camera->mode != CAMERA_MODE_BEHIND_MARIO) {
+        m->statusForCamera->cameraEvent = CAM_EVENT_SHOT_FROM_CANNON;
+    }
+
+    mario_set_forward_vel(m, m->forwardVel);
+
+    //play_sound_if_no_flag(m, SOUND_MARIO_YAHOO, MARIO_MARIO_SOUND_PLAYED);
+
+    switch (perform_air_step(m, 0)) {
+        case AIR_STEP_NONE:
+        // CHANGED TO ROLL
+            set_mario_animation(m, MARIO_ANIM_FORWARD_SPINNING);
+            m->faceAngle[0] = atan2s(m->forwardVel, m->vel[1]);
+            m->marioObj->header.gfx.angle[0] = -m->faceAngle[0];
+            break;
+
+        case AIR_STEP_LANDED:
+        // CHANGED TO ROLL
+            set_mario_action(m, ACT_SLIDE_ROLL, 0);
+            m->faceAngle[0] = 0;
+            set_camera_mode(m->area->camera, m->area->camera->defMode, 1);
+#if ENABLE_RUMBLE
+            queue_rumble_data(5, 80);
+#endif
+            break;
+
+        case AIR_STEP_HIT_WALL:
+            mario_set_forward_vel(m, -16.0f);
+
+            m->faceAngle[0] = 0;
+            if (m->vel[1] > 0.0f) {
+                m->vel[1] = 0.0f;
+            }
+
+            m->particleFlags |= PARTICLE_VERTICAL_STAR;
+            set_mario_action(m, ACT_BACKWARD_AIR_KB, 0);
+            set_camera_mode(m->area->camera, m->area->camera->defMode, 1);
+            break;
+
+        case AIR_STEP_HIT_LAVA_WALL:
+            lava_boost_on_wall(m);
+            break;
+    }
+
+    if ((m->forwardVel -= 0.05f) < 10.0f) {
+        mario_set_forward_vel(m, 10.0f);
+    }
+
+    if (m->vel[1] > 0.0f) {
+        m->particleFlags |= PARTICLE_DUST;
+    }
+#if ENABLE_RUMBLE
+    reset_rumble_timers_slip();
+#endif
+    return FALSE;
+}
+
 
 s32 act_flying(struct MarioState *m) {
     s16 startPitch = m->faceAngle[0];
@@ -2041,6 +2100,8 @@ s32 mario_execute_airborne_action(struct MarioState *m) {
         case ACT_AIR_HIT_WALL:         cancel = act_air_hit_wall(m);         break;
         case ACT_FORWARD_ROLLOUT:      cancel = act_forward_rollout(m);      break;
         case ACT_SHOT_FROM_CANNON:     cancel = act_shot_from_cannon(m);     break;
+        // NEW LAUNCH BARREL
+        case ACT_SHOT_FROM_LAUNCH_BARREL: cancel = act_shot_from_launch_barrel(m); break;
         case ACT_BUTT_SLIDE_AIR:       cancel = act_butt_slide_air(m);       break;
         case ACT_HOLD_BUTT_SLIDE_AIR:  cancel = act_hold_butt_slide_air(m);  break;
         case ACT_LAVA_BOOST:           cancel = act_lava_boost(m);           break;

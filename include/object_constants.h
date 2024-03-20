@@ -845,6 +845,12 @@ enum oActionsMarioCap {
     #define OPENED_CANNON_ACT_RISING                        0x4
     #define OPENED_CANNON_ACT_RAISE_BARREL                  0x5
     #define OPENED_CANNON_ACT_TURNING_YAW                   0x6
+/* Launch Barrel NEW */
+    /* oAction */
+    #define BARREL_ACT_IDLE                          0x0
+    #define BARREL_ACT_READY                         0x1
+    #define BARREL_ACT_SHOOT                         0x2
+    #define BHV_LAUNCH_BARREL_INIT                   0x3
 
 /* Door */
 enum oBehParams1stByteKeyDoor {

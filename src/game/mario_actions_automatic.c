@@ -766,6 +766,90 @@ s32 act_in_cannon(struct MarioState *m) {
 
     return FALSE;
 }
+// NEW In Barrel, Similar To Cannon
+s32 act_in_launch_barrel(struct MarioState *m) {
+    struct Object *marioObj = m->marioObj;
+    s16 startFacePitch = m->faceAngle[0];
+    s16 startFaceYaw = m->faceAngle[1];
+
+    switch (m->actionState) {
+        case ACT_STATE_IN_CANNON_INIT:
+            marioObj->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
+            m->usedObj->oInteractStatus = INT_STATUS_INTERACTED;
+
+            //m->statusForCamera->cameraEvent = CAM_EVENT_CANNON;
+            m->statusForCamera->usedObj = m->usedObj;
+
+            vec3_zero(m->vel);
+            vec3f_copy_y_off(m->pos, &m->usedObj->oPosVec, 50.0f);
+
+            m->forwardVel = 0.0f;
+
+            m->actionState = ACT_STATE_IN_CANNON_READY; // Skipping 2nd actstate
+            break;
+
+        case ACT_STATE_IN_CANNON_WAIT_FOR_CANNON:
+            if (m->usedObj->oAction == OPENED_CANNON_ACT_READY) {
+                m->faceAngle[0] = m->usedObj->oMoveAnglePitch;
+                m->faceAngle[1] = m->usedObj->oMoveAngleYaw;
+
+                marioObj->oMarioCannonObjectYaw = m->usedObj->oMoveAngleYaw;
+                marioObj->oMarioCannonInputYaw  = 0x0;
+
+                m->actionState = ACT_STATE_IN_CANNON_READY;
+            }
+            break;
+
+        case ACT_STATE_IN_CANNON_READY:
+            //m->faceAngle[0] -= (s16)(m->controller->stickY * 10.0f);
+            //marioObj->oMarioCannonInputYaw -= (s16)(m->controller->stickX * 10.0f);
+
+            m->faceAngle[0] = CLAMP(m->faceAngle[0], 0, DEGREES(80));
+            //marioObj->oMarioCannonInputYaw = CLAMP(marioObj->oMarioCannonInputYaw, -0x4000, 0x4000);
+
+            //m->faceAngle[0] = m->usedObj->oFaceAnglePitch;
+            m->faceAngle[1] = m->usedObj->oFaceAngleYaw;
+
+            //m->faceAngle[1] = m->//(marioObj->oMarioCannonObjectYaw + marioObj->oMarioCannonInputYaw);
+            if (m->input & INPUT_A_PRESSED) {
+                f32 cosPitch = coss(m->faceAngle[0]);
+                m->forwardVel = 60.0f * cosPitch;
+
+                f32 sinPitch = sins(m->faceAngle[0]);
+                m->vel[1] = 60.0f * sinPitch;
+
+                cosPitch *= 120.0f;
+
+                m->pos[0] += cosPitch * sins(m->faceAngle[1]);
+                m->pos[1] += 60.0f * sinPitch;
+                m->pos[2] += cosPitch * coss(m->faceAngle[1]);
+
+                play_sound(SOUND_ACTION_FLYING_FAST, marioObj->header.gfx.cameraToObject);
+                play_sound(SOUND_OBJ_POUNDING_CANNON, marioObj->header.gfx.cameraToObject);
+
+                marioObj->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
+
+                set_mario_action(m, ACT_SHOT_FROM_LAUNCH_BARREL, 0);
+                //set_mario_action(m, ACT_SHOT_FROM_CANNON, 0);
+#if ENABLE_RUMBLE
+                queue_rumble_data(60, 70);
+#endif
+                m->usedObj->oAction = BARREL_ACT_SHOOT;
+                return FALSE;
+            } else if (m->faceAngle[0] != startFacePitch || m->faceAngle[1] != startFaceYaw) {
+                play_sound(SOUND_MOVING_AIM_CANNON, marioObj->header.gfx.cameraToObject);
+#if ENABLE_RUMBLE
+                reset_rumble_timers_vibrate(0);
+#endif
+            }
+    }
+
+    vec3f_copy(marioObj->header.gfx.pos, m->pos);
+    vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
+    set_mario_animation(m, MARIO_ANIM_FORWARD_SPINNING); // CHANGED
+
+    return FALSE;
+}
 
 s32 act_tornado_twirling(struct MarioState *m) {
     struct Surface *floor;
@@ -882,6 +966,7 @@ s32 mario_execute_automatic_action(struct MarioState *m) {
         case ACT_LEDGE_CLIMB_FAST:       cancel = act_ledge_climb_fast(m);       break;
         case ACT_GRABBED:                cancel = act_grabbed(m);                break;
         case ACT_IN_CANNON:              cancel = act_in_cannon(m);              break;
+        case ACT_IN_LAUNCH_BARREL:       cancel = act_in_launch_barrel(m);       break;
         case ACT_TORNADO_TWIRLING:       cancel = act_tornado_twirling(m);       break;
     }
     /* clang-format on */
