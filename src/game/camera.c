@@ -9774,9 +9774,9 @@ void cutscene_exit_painting_end(struct Camera *c) {
 void cutscene_enter_cannon_end(struct Camera *c) {
     sStatusFlags &= ~CAM_FLAG_SMOOTH_MOVEMENT;
     sStatusFlags |= CAM_FLAG_BLOCK_SMOOTH_MOVEMENT;
-    c->mode = CAMERA_MODE_INSIDE_CANNON;
+    c->mode = CAMERA_MODE_8_DIRECTIONS;
     c->cutscene = CUTSCENE_NONE;
-    sCannonYOffset = 800.f;
+     sCannonYOffset = 800.f;
 }
 
 /**
@@ -9837,9 +9837,9 @@ void cutscene_enter_cannon_start(struct Camera *c) {
         sCutsceneVars[0].point[0] = obj->oPosX;
         sCutsceneVars[0].point[1] = obj->oPosY;
         sCutsceneVars[0].point[2] = obj->oPosZ;
-        sCutsceneVars[0].angle[0] = obj->oMoveAnglePitch;
-        sCutsceneVars[0].angle[1] = obj->oMoveAngleYaw;
-        sCutsceneVars[0].angle[2] = obj->oMoveAngleRoll;
+        sCutsceneVars[0].angle[0] = obj->oMoveAnglePitch; // CHANGED from move angle to face angle
+        sCutsceneVars[0].angle[1] = obj->oMoveAngleYaw; //
+        sCutsceneVars[0].angle[2] = obj->oMoveAngleRoll; //
     }
 
     // Store the camera's polar offset from the cannon in cvar1

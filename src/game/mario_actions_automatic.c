@@ -780,6 +780,7 @@ s32 act_in_launch_barrel(struct MarioState *m) {
             //m->statusForCamera->cameraEvent = CAM_EVENT_CANNON;
             m->statusForCamera->usedObj = m->usedObj;
 
+
             vec3_zero(m->vel);
             vec3f_copy_y_off(m->pos, &m->usedObj->oPosVec, 50.0f);
 
@@ -804,12 +805,20 @@ s32 act_in_launch_barrel(struct MarioState *m) {
             print_text(120, 120, "A");
             //m->faceAngle[0] -= (s16)(m->controller->stickY * 10.0f);
             //marioObj->oMarioCannonInputYaw -= (s16)(m->controller->stickX * 10.0f);
-
-            m->faceAngle[0] = CLAMP(m->faceAngle[0], 0, DEGREES(80));
+            m->faceAngle[0] = -m->usedObj->oFaceAnglePitch;
+            //m->faceAngle[0] = CLAMP(m->faceAngle[0], 0, DEGREES(80));
             //marioObj->oMarioCannonInputYaw = CLAMP(marioObj->oMarioCannonInputYaw, -0x4000, 0x4000);
 
-            //m->faceAngle[0] = m->usedObj->oFaceAnglePitch;
+            //m->area->camera->mode = CAMERA_MODE_C_UP;
             m->faceAngle[1] = m->usedObj->oFaceAngleYaw;
+            // NEW turn camera to face same way as barrel
+
+            // reset_pan_distance(m->area->camera);
+            // set_focus_rel_mario(m->area->camera, 0.f, 125.f, -100.f, 0);
+            // vec3s_set(camAngle, 0, m->statusForCamera->faceAngle[1], 0);
+            // vec3f_set(camOffset, 0.f, 125.f, 250.f);
+
+            // offset_rotated(m->area->camera->pos, m->statusForCamera->pos, camOffset, camAngle);
 
             //m->faceAngle[1] = m->//(marioObj->oMarioCannonObjectYaw + marioObj->oMarioCannonInputYaw);
             if (m->input & INPUT_A_PRESSED) {
@@ -818,7 +827,8 @@ s32 act_in_launch_barrel(struct MarioState *m) {
                 m->forwardVel = (f32)m->usedObj->oBehParams2ndByte * 2.0f * cosPitch;
 
                 f32 sinPitch = sins(m->faceAngle[0]);
-                m->vel[1] = 60.0f * sinPitch;
+                //m->vel[1] = 60.0f * sinPitch;
+                m->vel[1] = (f32)m->usedObj->oBehParams2ndByte * 1.5f * sinPitch;
 
                 cosPitch *= 120.0f;
 
