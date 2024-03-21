@@ -335,4 +335,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "falling_leaf/geo_header.h"
 
+#include "bounce_shroom/collision_header.h"
+
+#include "bounce_shroom/geo_header.h"
+
 #endif
