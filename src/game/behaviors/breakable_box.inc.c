@@ -20,6 +20,8 @@ void breakable_box_init(void) {
         case BREAKABLE_BOX_BP_3_COINS:  o->oNumLootCoins = 3; break;
         case BREAKABLE_BOX_BP_5_COINS:  o->oNumLootCoins = 5; break;
         case BREAKABLE_BOX_BP_LARGE:    cur_obj_scale(1.5f);  break;
+        // NEW
+        case 5: o->oNumLootCoins = 0; cur_obj_scale(1.5f); break;
     }
 }
 
@@ -104,7 +106,17 @@ void bhv_breakable_box_loop(void) {
     obj_set_hitbox(o, &sBreakableBoxHitbox);
     cur_obj_set_model(MODEL_BREAKABLE_BOX);
     if (o->oTimer == 0) breakable_box_init();
-    if (cur_obj_was_attacked_or_ground_pounded()) {
+    // NEW if colliding while rolling, break box ...good enough
+    if (o->oBehParams2ndByte == 0 && 
+    (gMarioState->action == ACT_SLIDE_ROLL || gMarioState->action == ACT_SHOT_FROM_LAUNCH_BARREL) && 
+    o->oDistanceToMario < 260)
+    //obj_check_if_collided_with_object(o, gMarioObject)) 
+    { 
+        obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
+        gMarioState->numCoins++;
+        create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
+    }
+    else if (cur_obj_was_attacked_or_ground_pounded() && o->oBehParams2ndByte != 0) {
         obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
         create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
     }

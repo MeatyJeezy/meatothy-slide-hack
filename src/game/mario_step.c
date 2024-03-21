@@ -423,7 +423,6 @@ s32 bonk_or_hit_lava_wall(struct MarioState *m, struct WallCollisionData *wallDa
     s16 wallDYaw;
     s32 oldWallDYaw;
     s32 result = AIR_STEP_NONE;
-
     if (m->wall != NULL) {
         oldWallDYaw = abs_angle_diff(m->wallYaw, m->faceAngle[1]);
     } else {

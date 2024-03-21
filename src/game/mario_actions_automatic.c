@@ -814,7 +814,8 @@ s32 act_in_launch_barrel(struct MarioState *m) {
             //m->faceAngle[1] = m->//(marioObj->oMarioCannonObjectYaw + marioObj->oMarioCannonInputYaw);
             if (m->input & INPUT_A_PRESSED) {
                 f32 cosPitch = coss(m->faceAngle[0]);
-                m->forwardVel = 60.0f * cosPitch;
+                //m->forwardVel = 60.0f * cosPitch;
+                m->forwardVel = (f32)m->usedObj->oBehParams2ndByte * 2.0f * cosPitch;
 
                 f32 sinPitch = sins(m->faceAngle[0]);
                 m->vel[1] = 60.0f * sinPitch;
