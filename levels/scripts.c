@@ -200,6 +200,7 @@ const LevelScript script_func_global_1[] = {
     //NEW MODELS HERE
     LOAD_MODEL_FROM_GEO(MODEL_LAUNCH_BARREL, launch_barrel_geo),
     LOAD_MODEL_FROM_GEO(MODEL_FALLING_LEAF, falling_leaf_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_BOUNCE_SHROOM, bounce_shroom_geo),
     RETURN(),
 };
 

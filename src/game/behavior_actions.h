@@ -557,6 +557,7 @@ void bhv_launch_barrel_loop(void);
 void bhv_falling_leaves_init();
 void bhv_falling_leaves_loop();
 void bhv_single_falling_leaf();
+void bhv_bounce_shroom_loop();
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 

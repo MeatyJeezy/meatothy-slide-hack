@@ -548,6 +548,7 @@
 //NEW MODELS START HERE
 #define MODEL_LAUNCH_BARREL               0xE4
 #define MODEL_FALLING_LEAF                0xE5
+#define MODEL_BOUNCE_SHROOM               0xE6
 
 //NEW MODELS END HERE
 

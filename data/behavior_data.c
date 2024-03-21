@@ -6115,3 +6115,11 @@ const BehaviorScript bhvSingleFallingLeaf[] = {
         CALL_NATIVE(bhv_single_falling_leaf),
     END_LOOP(),
 };
+const BehaviorScript bhvBounceShroom[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(bounce_shroom_collision),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_bounce_shroom_loop),
+    END_LOOP(),
+};

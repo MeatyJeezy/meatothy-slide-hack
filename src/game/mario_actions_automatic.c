@@ -811,16 +811,6 @@ s32 act_in_launch_barrel(struct MarioState *m) {
 
             //m->area->camera->mode = CAMERA_MODE_C_UP;
             m->faceAngle[1] = m->usedObj->oFaceAngleYaw;
-            // NEW turn camera to face same way as barrel
-
-            // reset_pan_distance(m->area->camera);
-            // set_focus_rel_mario(m->area->camera, 0.f, 125.f, -100.f, 0);
-            // vec3s_set(camAngle, 0, m->statusForCamera->faceAngle[1], 0);
-            // vec3f_set(camOffset, 0.f, 125.f, 250.f);
-
-            // offset_rotated(m->area->camera->pos, m->statusForCamera->pos, camOffset, camAngle);
-
-            //m->faceAngle[1] = m->//(marioObj->oMarioCannonObjectYaw + marioObj->oMarioCannonInputYaw);
             if (m->input & INPUT_A_PRESSED) {
                 f32 cosPitch = coss(m->faceAngle[0]);
                 //m->forwardVel = 60.0f * cosPitch;

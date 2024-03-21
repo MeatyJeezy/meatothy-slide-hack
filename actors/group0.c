@@ -33,5 +33,5 @@
 
 #include "launch_barrel/model.inc.c"
 #include "falling_leaf/model.inc.c"
-#include "bounce_shroom/collision.inc.c"
 #include "bounce_shroom/model.inc.c"
+#include "bounce_shroom/collision.inc.c"
