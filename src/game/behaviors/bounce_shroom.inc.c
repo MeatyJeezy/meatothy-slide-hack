@@ -17,11 +17,12 @@ void bounced_on_shroom() {
 }
 
 void bhv_bounce_shroom_loop() {
+    f32 bparam1scale = (f32)GET_BPARAM1(o->oBehParams) * 0.1f;
+    cur_obj_scale(bparam1scale < 0.25f ? 0.25f : bparam1scale);
     load_object_collision_model();
     cur_obj_set_model(MODEL_BOUNCE_SHROOM);
     // Scale based on behparam1
-    f32 bparam1scale = (f32)GET_BPARAM1(o->oBehParams) * 0.1f;
-    cur_obj_scale(bparam1scale < 0.25f ? 0.25f : bparam1scale);
+
     switch (o->oAction) {
         case 0:
         if (cur_obj_is_mario_on_platform()) {
@@ -33,9 +34,15 @@ void bhv_bounce_shroom_loop() {
             gMarioState->vel[1] = (f32)o->oBehParams2ndByte * 1.2f * sins(pitch);
             // turn mario to face same direction as mushroom. this is my panacea
             if (o->oFaceAnglePitch != 0)
-                gMarioState->faceAngle[1] = o->oFaceAngleYaw;
+                gMarioState->faceAngle[1] = (s16)o->oFaceAngleYaw;
             
             gMarioState->forwardVel -= (f32)o->oBehParams2ndByte * 0.9f * cosPitchX;
+            //safety net for launching mario backwards
+            if (gMarioState->forwardVel < 0) {
+                gMarioState->faceAngle[1] += 0x8000;
+                gMarioState->forwardVel = -gMarioState->forwardVel;
+            }
+                
             o->oAction = 1;
         }
         break;

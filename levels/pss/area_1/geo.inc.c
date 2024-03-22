@@ -21,6 +21,8 @@ const GeoLayout pss_area_1_geo[] = {
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 6489, -2876, 21176, pss_dl_slide1_011_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 8660, -1905, 21313, pss_dl_slide1_012_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, 22604, -4717, 21475, 0, 90, 0, pss_dl_slide1_013_mesh_layer_1),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -28435, 8552, 18299, 0, 0, -3, pss_dl_slide2_mesh_layer_1),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -16990, 7955, 18299, 0, 0, -3, pss_dl_slide2_001_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -30452, 7057, 18045, pss_dl_startslide_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 22990, -5932, 25061, pss_dl_wallkickrocks_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 6065, -10271, -10532, pss_dl_Water_mesh_layer_1),
