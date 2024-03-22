@@ -29,19 +29,23 @@ void bhv_bounce_shroom_loop() {
             // bounce mario at face angle + 90 degrees
             f32 pitch = o->oFaceAnglePitch + DEGREES(90);
             f32 cosPitchX = coss(o->oFaceAnglePitch + DEGREES(90));
+            f32 oldSpeed = gMarioState->forwardVel;
             // launch vectors
             set_mario_action(gMarioState, ACT_DOUBLE_JUMP, 0);
             gMarioState->vel[1] = (f32)o->oBehParams2ndByte * 1.2f * sins(pitch);
-            // turn mario to face same direction as mushroom. this is my panacea
-            if (o->oFaceAnglePitch != 0)
+            // turn mario to face same direction as mushroom if it's angled. this is my panacea
+            if (o->oFaceAnglePitch != 0) {
                 gMarioState->faceAngle[1] = (s16)o->oFaceAngleYaw;
+                
+            }
+            gMarioState->forwardVel = -(f32)o->oBehParams2ndByte * 0.9f * cosPitchX;
             
-            gMarioState->forwardVel -= (f32)o->oBehParams2ndByte * 0.9f * cosPitchX;
             //safety net for launching mario backwards
             if (gMarioState->forwardVel < 0) {
                 gMarioState->faceAngle[1] += 0x8000;
                 gMarioState->forwardVel = -gMarioState->forwardVel;
             }
+            gMarioState->forwardVel += oldSpeed;
                 
             o->oAction = 1;
         }
