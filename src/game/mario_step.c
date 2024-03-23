@@ -15,7 +15,7 @@
 static s16 sMovingSandSpeeds[] = { 12, 8, 4, 0 };
 
 struct Surface gWaterSurfacePseudoFloor = {
-    SURFACE_VERY_SLIPPERY,      // type
+    SURFACE_NOT_SLIPPERY,      // type NEW changed type from Ver Slippery
     0x0,                        // force
     0x0,                        // flags
      0,                         // room
@@ -485,7 +485,7 @@ s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepAr
         return AIR_STEP_HIT_WALL;
     }
 
-    if (((m->action & ACT_FLAG_RIDING_SHELL) || m->action == ACT_SLIDE_ROLL ) && floorHeight < waterLevel) {
+    if (((m->action & ACT_FLAG_RIDING_SHELL) || m->action == ACT_SHOT_FROM_LAUNCH_BARREL ) && floorHeight < waterLevel) {
         floorHeight = waterLevel;
         floor = &gWaterSurfacePseudoFloor;
         floor->originOffset = -floorHeight;

@@ -240,9 +240,13 @@ s32 update_sliding(struct MarioState *m, f32 stopSpeed) {
             break;
 
         case SURFACE_CLASS_NOT_SLIPPERY:
-            accel = 5.0f;
-            lossFactor = m->intendedMag / 32.0f * forward * 0.02f + 0.92f;
+            accel = 1.0f;
+            lossFactor = m->intendedMag / 1.0f * forward * 0.02f + 0.99f;
             break;
+        // case SURFACE_CLASS_NOT_SLIPPERY:
+        //     accel = 5.0f;
+        //     lossFactor = m->intendedMag / 32.0f * forward * 0.02f + 0.92f;
+        //     break;
     }
 
     oldSpeed = sqrtf(m->slideVelX * m->slideVelX + m->slideVelZ * m->slideVelZ);
@@ -296,7 +300,8 @@ void apply_slope_accel(struct MarioState *m) {
                 slopeAccel = 1.7f;
                 break;
             case SURFACE_CLASS_NOT_SLIPPERY:
-                slopeAccel = 0.0f;
+                slopeAccel = 0.0f;// changed from 0
+                //steepness
                 break;
         }
 
@@ -394,7 +399,7 @@ s32 apply_slope_decel(struct MarioState *m, f32 decelCoef) {
             decel = decelCoef * 2.0f;
             break;
         case SURFACE_CLASS_NOT_SLIPPERY:
-            decel = decelCoef * 3.0f;
+            decel = decelCoef * 0.0f; // NEW changed from 3.0
             break;
     }
 
@@ -1600,8 +1605,12 @@ s32 act_slide_roll(struct MarioState *m) {
     }
     //set_mario_anim_with_accel(m, MARIO_ANIM_FORWARD_SPINNING, m->forwardVel * 0x10000);
     play_mario_landing_sound_once(m, SOUND_ACTION_TERRAIN_BODY_HIT_GROUND);
-
-    if (update_sliding(m, 8.0f) && is_anim_at_end(m)) {
+    // No going backwards even tho it'd be kinda sick
+    if (m->forwardVel < 1) {
+        mario_set_forward_vel(m, 0.0f);
+        set_mario_action(m, ACT_STOMACH_SLIDE_STOP, 0);
+    }
+    if (update_sliding(m, 14.0f) && is_anim_at_end(m)) {
         mario_set_forward_vel(m, 0.0f);
         set_mario_action(m, ACT_BUTT_SLIDE_STOP, 0);
     }
