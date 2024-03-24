@@ -340,4 +340,12 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "bounce_shroom/collision_header.h"
 
+#include "water_wheel/geo_header.h"
+
+#include "water_wheel/collision_header.h"
+
+#include "rolling_slide/geo_header.h"
+
+#include "rolling_slide/collision_header.h"
+
 #endif

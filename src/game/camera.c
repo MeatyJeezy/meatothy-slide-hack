@@ -5783,6 +5783,10 @@ u32 surface_type_modes(struct Camera *c) {
             transition_to_camera_mode(c, CAMERA_MODE_CLOSE, 90);
             modeChanged++;
             break;
+        // case SURFACE_BOULDER_CHASE_CAM: 
+            //transition_to_camera_mode(c, CAMERA_MODE_FIXED, 90);
+            //set_camera_mode_fixed(c, gMarioState->pos[0] + 300, gMarioState->pos[1] - 100, gMarioState->pos[2]);
+            // modeChanged++;
     }
     return modeChanged;
 }
@@ -6253,6 +6257,20 @@ s16 camera_course_processing(struct Camera *c) {
             b++;
         }
     }
+    // NEW camera stuff to circumvent vanilla BS.
+    // switch (gCurrLevelArea) {
+    //     case AREA_PSS:
+    //         if(sMarioGeometry.currFloorType == SURFACE_BOULDER_CHASE_CAM) {
+    //             c->defMode = CAMERA_MODE_FIXED;
+    //             set_camera_mode(c, CAMERA_MODE_FIXED, 1);
+    //             //set_camera_mode_fixed(c, gMarioState->pos[0] + 300, gMarioState->pos[1] - 100, gMarioState->pos[2]);
+                
+    //         }
+    //         else {
+    //             set_camera_mode(c, CAMERA_MODE_8_DIRECTIONS, 1);
+    //         }
+    //     break;
+    // }
 #if defined(ENABLE_VANILLA_CAM_PROCESSING) && !defined(FORCED_CAMERA_MODE) && !defined(USE_COURSE_DEFAULT_MODE)
     // Area-specific camera processing
     if (!(sStatusFlags & CAM_FLAG_BLOCK_AREA_PROCESSING)) {

@@ -35,3 +35,7 @@
 #include "falling_leaf/model.inc.c"
 #include "bounce_shroom/model.inc.c"
 #include "bounce_shroom/collision.inc.c"
+#include "water_wheel/model.inc.c"
+#include "water_wheel/collision.inc.c"
+#include "rolling_slide/model.inc.c"
+#include "rolling_slide/collision.inc.c"

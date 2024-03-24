@@ -20,3 +20,5 @@
 #include "launch_barrel/geo.inc.c"
 #include "falling_leaf/geo.inc.c"
 #include "bounce_shroom/geo.inc.c"
+#include "water_wheel/geo.inc.c"
+#include "rolling_slide/geo.inc.c"

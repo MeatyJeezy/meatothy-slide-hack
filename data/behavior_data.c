@@ -4608,7 +4608,8 @@ const BehaviorScript bhvHiddenStarTrigger[] = {
 const BehaviorScript bhvTtmRollingLog[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_COLLISION_DATA(ttm_seg7_collision_pitoune_2),
+    //LOAD_COLLISION_DATA(ttm_seg7_collision_pitoune_2),
+    LOAD_COLLISION_DATA(rolling_slide_collision),// CHANGED
     SET_HOME(),
     SET_FLOAT(oCollisionDistance, 2000),
     CALL_NATIVE(bhv_ttm_rolling_log_init),
@@ -6078,10 +6079,10 @@ const BehaviorScript bhvIntroScene[] = {
     END_LOOP(),
 };
 // NEW OBJECTS START HERE
-const BehaviorScript bhvSmallSnake[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_SILHOUETTE)), //! Silhouette doesn't show up in-game, due to combiner modes.
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 50, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+const BehaviorScript bhvSmallSnake[] = { // temporarily using this to test camera.
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO)), //! Silhouette doesn't show up in-game, due to combiner modes.
+    //SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 50, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_small_snake_loop),
     END_LOOP(),
@@ -6090,7 +6091,7 @@ const BehaviorScript bhvLaunchBarrel[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_SET_FACE_ANGLE_TO_MOVE_ANGLE)),
     SET_INT(oInteractType, INTERACT_LAUNCH_BARREL),
-    SET_HITBOX(50, 50),
+    SET_HITBOX(60, 60),
     //SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 50, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_launch_barrel_loop),
@@ -6122,5 +6123,17 @@ const BehaviorScript bhvBounceShroom[] = {
     SET_FLOAT(oDrawingDistance, 10000),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_bounce_shroom_loop),
+    END_LOOP(),
+};
+const BehaviorScript bhvWaterWheel[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(water_wheel_collision),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_ACTIVE_FROM_AFAR)),
+    SET_FLOAT(oDrawingDistance, 15000),
+    //SET_INT(oBehParams2ndByte, 0),
+    BEGIN_LOOP(),
+        //ADD_INT(oFaceAngleRoll, 100),
+        CALL_NATIVE(bhv_custom_rotating_object_loop),
+        //CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

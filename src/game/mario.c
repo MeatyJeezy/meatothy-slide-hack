@@ -412,6 +412,7 @@ s32 mario_get_floor_class(struct MarioState *m) {
             case SURFACE_NOISE_VERY_SLIPPERY_74:
             case SURFACE_NOISE_VERY_SLIPPERY:
             case SURFACE_NO_CAM_COL_VERY_SLIPPERY:
+            case SURFACE_BOULDER_CHASE_CAM: // NEW
                 floorClass = SURFACE_CLASS_VERY_SLIPPERY;
                 break;
         }
@@ -491,6 +492,7 @@ u32 mario_get_terrain_sound_addend(struct MarioState *m) {
                 case SURFACE_NOISE_VERY_SLIPPERY_74:
                 case SURFACE_NOISE_VERY_SLIPPERY:
                 case SURFACE_NO_CAM_COL_VERY_SLIPPERY:
+                case SURFACE_BOULDER_CHASE_CAM: // NEW
                     floorSoundType = 3;
                     break;
 

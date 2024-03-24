@@ -52,6 +52,8 @@ void barrel_act_ready(void) { // act 1
 
 void barrel_act_shoot(void) { // act 2
     cur_obj_disable_rendering();
+    spawn_triangle_break_particles(30, MODEL_DIRT_ANIMATION, 3.0f, TINY_DIRT_PARTICLE_ANIM_STATE_YELLOW);
+    cur_obj_play_sound_2(SOUND_GENERAL_BREAK_BOX);
     o->oTimer = 0;
     o->oAction = 3;
 }

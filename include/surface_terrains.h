@@ -23,7 +23,7 @@ enum SurfaceTypes {
     SURFACE_FLOWING_WATER,              // 0x000E // Water (flowing), has parameters
     SURFACE_000F,                       // 0x000F // Unused
     SURFACE_0010,                       // 0x0010 // Unused
-    SURFACE_0011,                       // 0x0011 // Unused
+    SURFACE_BOULDER_CHASE_CAM,                       // 0x0011 // NEW used to set cam behind mario for boulder chase sequence
     SURFACE_INTANGIBLE,                 // 0x0012 // Intangible (Separates BBH mansion from merry-go-round, for room usage)
     SURFACE_VERY_SLIPPERY,              // 0x0013 // Very slippery, mostly used for slides
     SURFACE_SLIPPERY,                   // 0x0014 // Slippery

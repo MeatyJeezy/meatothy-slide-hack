@@ -45,6 +45,7 @@ void bhv_bounce_shroom_loop() {
                 gMarioState->faceAngle[1] += 0x8000;
                 gMarioState->forwardVel = -gMarioState->forwardVel;
             }
+            // cut down on super faster horizontal speeds
             gMarioState->forwardVel += oldSpeed;
                 
             o->oAction = 1;

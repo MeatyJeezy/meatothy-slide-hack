@@ -12,6 +12,7 @@ struct ObjectHitbox sBreakableBoxHitbox = {
     /* hurtboxHeight:     */ 200,
 };
 
+
 void breakable_box_init(void) {
     o->oHiddenObjectSwitchObj = NULL;
     o->oAnimState = BREAKABLE_BOX_ANIM_STATE_CORK_BOX;
@@ -21,7 +22,7 @@ void breakable_box_init(void) {
         case BREAKABLE_BOX_BP_5_COINS:  o->oNumLootCoins = 5; break;
         case BREAKABLE_BOX_BP_LARGE:    cur_obj_scale(1.5f);  break;
         // NEW
-        case 5: o->oNumLootCoins = 0; cur_obj_scale(1.5f); break;
+        case 5: o->oNumLootCoins = 0; break;
     }
 }
 
@@ -103,13 +104,23 @@ void bhv_hidden_object_loop(void) {
 }
 
 void bhv_breakable_box_loop(void) {
-    obj_set_hitbox(o, &sBreakableBoxHitbox);
+    obj_scale(o, 1.0f + (0.1f * (f32)GET_BPARAM1(o->oBehParams)));
+    load_object_collision_model();
     cur_obj_set_model(MODEL_BREAKABLE_BOX);
     if (o->oTimer == 0) breakable_box_init();
+    // Only set the hitbox while mario isn't rolling to prevent bonks
+    if (gMarioState->action == ACT_SLIDE_ROLL || gMarioState->action == ACT_SHOT_FROM_LAUNCH_BARREL) {
+        
+        //cur_obj_become_intangible();
+        //obj_set_hitbox(o, &sBreakableBoxHitbox);
+    }
+    else {
+        //cur_obj_become_tangible();
+    }
     // NEW if colliding while rolling, break box ...good enough
     if (o->oBehParams2ndByte == 0 && 
     (gMarioState->action == ACT_SLIDE_ROLL || gMarioState->action == ACT_SHOT_FROM_LAUNCH_BARREL) && 
-    o->oDistanceToMario < 260)
+    (o->oDistanceToMario < 160 || obj_check_if_collided_with_object(o, gMarioObject)))
     //obj_check_if_collided_with_object(o, gMarioObject)) 
     { 
         obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);

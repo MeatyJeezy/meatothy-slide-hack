@@ -825,3 +825,4 @@ void obj_spit_fire(s16 relativePosX, s16 relativePosY, s16 relativePosZ, f32 sca
 #include "behaviors/launch_barrel.inc.c"
 #include "behaviors/falling_leaves.inc.c"
 #include "behaviors/bounce_shroom.inc.c"
+#include "behaviors/custom_rotating_object.inc.c"
