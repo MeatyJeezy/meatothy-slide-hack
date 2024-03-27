@@ -547,5 +547,6 @@ extern const BehaviorScript bhvFallingLeaves[];
 extern const BehaviorScript bhvSingleFallingLeaf[];
 extern const BehaviorScript bhvBounceShroom[];
 extern const BehaviorScript bhvWaterWheel[];
+extern const BehaviorScript bhvCustomRollingLog[];
 
 #endif // BEHAVIOR_DATA_H

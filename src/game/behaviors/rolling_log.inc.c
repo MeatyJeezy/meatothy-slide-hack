@@ -6,6 +6,20 @@
 // hypothesis is that the object in the middle here used to be
 // a rolling log of another variation.
 
+void bhv_custom_rolling_log_init(void) {
+    o->oRollingLogX = o->oPosX;
+    o->oRollingLogZ = o->oPosZ;
+    o->oRollingLogMaxDist = 271037.0f;
+
+    //o->oMoveAngleYaw = 8810;
+    o->oForwardVel = 0.0f;
+    o->oVelX = 0.0f;
+    o->oVelZ = 0.0f;
+    //o->oFaceAnglePitch = 0;
+    //o->oAngleVelPitch = 0;
+    cur_obj_scale(0.8f); 
+}
+
 void bhv_ttm_rolling_log_init(void) {
     o->oRollingLogX = 3970.0f;
     o->oRollingLogZ = 3654.0f;
@@ -20,43 +34,67 @@ void bhv_ttm_rolling_log_init(void) {
 }
 
 void rolling_log_roll_log(void) {
+    // CHANGED some values. Want the slide to not rotate more than 20 degrees.
     if (gMarioObject->platform == o) {
         f32 rollAmount = (gMarioObject->header.gfx.pos[2] - o->oPosZ) * coss(-o->oMoveAngleYaw)
                        - (gMarioObject->header.gfx.pos[0] - o->oPosX) * sins(-o->oMoveAngleYaw);
-        if (rollAmount > 0) {
-            o->oAngleVelPitch += 0x10;
-        } else {
-            o->oAngleVelPitch -= 0x10;
-        }
-
-        o->oAngleVelPitch = CLAMP(o->oAngleVelPitch, -0x200, 0x200);
-    } else {
-        if (is_point_close_to_object(o, o->oHomeX, o->oHomeY, o->oHomeZ, 100)) {
-            if (o->oAngleVelPitch != 0) {
-                if (o->oAngleVelPitch > 0) {
-                    o->oAngleVelPitch -= 0x10;
-                } else {
-                    o->oAngleVelPitch += 0x10;
-                }
-
-                if (o->oAngleVelPitch < 0x10 && o->oAngleVelPitch > -0x10) {
-                    o->oAngleVelPitch = 0;
-                }
+        //Check it hasn't rolled too much one way or the other
+        //if (o->oFaceAnglePitch < 0x500 && o->oFaceAngleRoll > -0x500) {
+            if (rollAmount > 0) {
+                o->oAngleVelPitch += 0x4;
+            } else if (rollAmount < 0) {
+                o->oAngleVelPitch -= 0x4;
             }
-        } else {
-            if (o->oAngleVelPitch != 0x100) {
-                if (o->oAngleVelPitch > 0x100) {
-                    o->oAngleVelPitch -= 0x10;
-                } else {
-                    o->oAngleVelPitch += 0x10;
-                }
-
-                if (o->oAngleVelPitch < 0x110 && o->oAngleVelPitch > 0xF0) {
-                    o->oAngleVelPitch = 0x100;
-                }
-            }
-        }
+    //     } else { // move vel towards zero past a certain threshold
+    //         if (o->oFaceAnglePitch >= 0x500) {
+    //             if (rollAmount > 0 && o->oAngleVelPitch > 0) {
+    //                 o->oAngleVelPitch -= 0x1;
+    //             } 
+    //             else if (rollAmount < 0) {
+    //                 o->oAngleVelPitch += 0x1;
+    //             }
+                
+    //         }
+    //         else if (o->oFaceAnglePitch <= -0x500) {
+    //             if (rollAmount < 0 && o->oAngleVelPitch < 0) {
+    //                 o->oAngleVelPitch += 0x1;
+    //             } 
+    //             else if (rollAmount > 0 && o->oAngleVelPitch >= 0) {
+    //                 o->oAngleVelPitch -= 0x1;
+    //             }
+    //         } 
+    //     }
     }
+        
+        o->oFaceAnglePitch = CLAMP(o->oFaceAnglePitch, -0x1200, 0x1200);
+        o->oAngleVelPitch = CLAMP(o->oAngleVelPitch, -0x30, 0x30); // changed to lower max roll speed
+    // } else {
+    //     if (is_point_close_to_object(o, o->oHomeX, o->oHomeY, o->oHomeZ, 100)) {
+    //         if (o->oAngleVelPitch != 0) {
+    //             if (o->oAngleVelPitch > 0) {
+    //                 o->oAngleVelPitch -= 0x10;
+    //             } else {
+    //                 o->oAngleVelPitch += 0x10;
+    //             }
+
+    //             if (o->oAngleVelPitch < 0x10 && o->oAngleVelPitch > -0x10) {
+    //                 o->oAngleVelPitch = 0;
+    //             }
+    //         }
+    //     } else {
+    //         if (o->oAngleVelPitch != 0x100) {
+    //             if (o->oAngleVelPitch > 0x100) {
+    //                 o->oAngleVelPitch -= 0x10;
+    //             } else {
+    //                 o->oAngleVelPitch += 0x10;
+    //             }
+
+    //             if (o->oAngleVelPitch < 0x110 && o->oAngleVelPitch > 0xF0) {
+    //                 o->oAngleVelPitch = 0x100;
+    //             }
+    //         }
+    //     }
+    
 }
 
 void bhv_rolling_log_loop(void) {
@@ -65,12 +103,12 @@ void bhv_rolling_log_loop(void) {
 
     rolling_log_roll_log();
 
-    o->oForwardVel = o->oAngleVelPitch / 0x40;
-    o->oVelX = o->oForwardVel * sins(o->oMoveAngleYaw);
-    o->oVelZ = o->oForwardVel * coss(o->oMoveAngleYaw);
+    //o->oForwardVel = o->oAngleVelPitch / 0x40;
+    //o->oVelX = o->oForwardVel * sins(o->oMoveAngleYaw);
+    //o->oVelZ = o->oForwardVel * coss(o->oMoveAngleYaw);
 
-    o->oPosX += o->oVelX;
-    o->oPosZ += o->oVelZ;
+    //o->oPosX += o->oVelX;
+    //o->oPosZ += o->oVelZ;
 
     if (o->oRollingLogMaxDist < sqr(o->oPosX - o->oRollingLogX) + sqr(o->oPosZ - o->oRollingLogZ)) {
         o->oForwardVel = 0.0f;
@@ -80,7 +118,7 @@ void bhv_rolling_log_loop(void) {
         o->oVelZ = 0.0f;
     }
 
-    o->oFaceAnglePitch += o->oAngleVelPitch;
+    o->oFaceAnglePitch += o->oAngleVelPitch; // 
     if (absf(o->oFaceAnglePitch & 0x1FFF) < 528.0f && o->oAngleVelPitch != 0) {
         cur_obj_play_sound_2(SOUND_GENERAL_ROLLING_LOG);
     }

@@ -4479,10 +4479,10 @@ const BehaviorScript bhvBigSnowmanWhole[] = {
 
 const BehaviorScript bhvBigBoulder[] = {
     BEGIN(OBJ_LIST_GENACTOR),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SET_FLOAT(oGraphYOffset, 180),
     CALL_NATIVE(bhv_big_boulder_init),
-    SET_FLOAT(oDrawingDistance, 20000),
+    SET_FLOAT(oDrawingDistance, 12000), // changed from 20000
     BEGIN_LOOP(),
         SET_INT(oIntangibleTimer, 0),
         CALL_NATIVE(bhv_big_boulder_loop),
@@ -4491,7 +4491,7 @@ const BehaviorScript bhvBigBoulder[] = {
 
 const BehaviorScript bhvBigBoulderGenerator[] = {
     BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_big_boulder_generator_loop),
     END_LOOP(),
@@ -4610,7 +4610,7 @@ const BehaviorScript bhvTtmRollingLog[] = {
     OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     //LOAD_COLLISION_DATA(ttm_seg7_collision_pitoune_2),
     LOAD_COLLISION_DATA(rolling_slide_collision),// CHANGED
-    SET_HOME(),
+    //SET_HOME(),
     SET_FLOAT(oCollisionDistance, 2000),
     CALL_NATIVE(bhv_ttm_rolling_log_init),
     BEGIN_LOOP(),
@@ -6135,5 +6135,21 @@ const BehaviorScript bhvWaterWheel[] = {
         //ADD_INT(oFaceAngleRoll, 100),
         CALL_NATIVE(bhv_custom_rotating_object_loop),
         //CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+// Custom Rolling Log
+const BehaviorScript bhvCustomRollingLog[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_ACTIVE_FROM_AFAR)),
+    //LOAD_COLLISION_DATA(ttm_seg7_collision_pitoune_2),
+    LOAD_COLLISION_DATA(rolling_slide_collision),// CHANGED
+    //SET_HOME(),
+    SET_FLOAT(oDrawingDistance, 10000),
+    SET_FLOAT(oCollisionDistance, 10000),
+    CALL_NATIVE(bhv_custom_rolling_log_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_rolling_log_loop),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

@@ -3,9 +3,10 @@
 void bhv_big_boulder_init(void) {
     vec3f_copy(&o->oHomeVec, &o->oPosVec);
 
-    o->oGravity = 8.0f;
+    o->oGravity = 12.0f;
     o->oFriction = 0.999f;
     o->oBuoyancy = 2.0f;
+    o->oMoveAngleYaw += ((s16)random_sign() % 0x2000) + 0x4000;
 }
 
 void boulder_act_1(void) {
@@ -16,12 +17,18 @@ void boulder_act_1(void) {
         spawn_mist_particles();
     }
 
-    if (o->oForwardVel > 70.0f) {
-        o->oForwardVel = 70.0f;
+    if (o->oForwardVel > 200.0f) { // changed from 70
+        o->oForwardVel = 200.0f;
     }
 
-    if (o->oPosY < -1000.0f) {
+    if (o->oPosY < -1000.0f) { // changed
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+    }
+    if ( o->oDistanceToMario > 9000.0f) {
+        cur_obj_hide();
+    }
+    else {
+        cur_obj_unhide();
     }
 }
 
@@ -32,7 +39,7 @@ void bhv_big_boulder_loop(void) {
 
     switch (o->oAction) {
         case 0:
-            o->oForwardVel = 40.0f;
+            o->oForwardVel = 0.0f;
             o->oAction = 1;
             break;
 
@@ -57,20 +64,28 @@ void bhv_big_boulder_generator_loop(void) {
     if (!current_mario_room_check(4)
         || is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 1500)) {
 #else 
-    if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 1500)) {
+    if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 1000)) { // c
 #endif
         return;
     }
 
-    if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 6000)) {
+    if (o->oAction == 1) {
         if (!(o->oTimer & 0x3F)) {
             boulderObj = spawn_object(o, MODEL_HMC_ROLLING_ROCK, bhvBigBoulder);
-            boulderObj->oMoveAngleYaw = random_float() * 4096.0f;
+            //boulderObj->oMoveAngleYaw = random_float() * 4096.0f;
         }
-    } else {
-        if (!(o->oTimer & 0x7F)) {
-            boulderObj = spawn_object(o, MODEL_HMC_ROLLING_ROCK, bhvBigBoulder);
-            boulderObj->oMoveAngleYaw = random_float() * 4096.0f;
+        // Stop spawning when too far
+        if (o->oDistanceToMario > 12000.0f) {
+            o->oAction = 0;
         }
+    } // Start spawning when close enough
+    if (o->oDistanceToMario < 4500.0f) {
+        o->oAction = 1;
     }
+    // else {
+    //     if (!(o->oTimer & 0x7F)) {
+    //         boulderObj = spawn_object(o, MODEL_HMC_ROLLING_ROCK, bhvBigBoulder);
+    //         //boulderObj->oMoveAngleYaw = random_float() * 4096.0f;
+    //     }
+    // }
 }

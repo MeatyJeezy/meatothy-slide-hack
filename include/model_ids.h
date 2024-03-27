@@ -95,7 +95,7 @@
 #define MODEL_HMC_METAL_PLATFORM               0x36        // hmc_geo_0005A0
 #define MODEL_HMC_METAL_ARROW_PLATFORM         0x37        // hmc_geo_0005B8
 #define MODEL_HMC_ELEVATOR_PLATFORM            0x38        // hmc_geo_0005D0
-#define MODEL_HMC_ROLLING_ROCK                 0x39        // hmc_geo_000548
+#define MODEL_HMC_ROLLING_ROCK                 0xEA        // hmc_geo_000548 // NEW Changed to unused value
 #define MODEL_HMC_ROCK_PIECE                   0x3A        // hmc_geo_000570 - unused
 #define MODEL_HMC_ROCK_SMALL_PIECE             0x3B        // hmc_geo_000588 - unused
 #define MODEL_HMC_RED_GRILLS                   0x3C        // hmc_geo_000530
@@ -550,6 +550,7 @@
 #define MODEL_FALLING_LEAF                0xE5
 #define MODEL_BOUNCE_SHROOM               0xE6
 #define MODEL_WATER_WHEEL 0xE7
+#define MODEL_ROLLING_SLIDE 0xE8
 
 //NEW MODELS END HERE
 

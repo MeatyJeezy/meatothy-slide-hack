@@ -114,7 +114,9 @@ void bhv_koopa_shell_loop(void) {
 
 // TEMPORARY for camera controls
 void bhv_small_snake_loop(void) {
-    if (o->oDistanceToMario < 7000.0f) {
+    f32 range;
+    range = o->oBehParams2ndByte * 100.0f;
+    if (o->oDistanceToMario < range && gMarioObject->oPosY - o->oPosY < 700.0f) { // In range and not too high up
         if (gMarioState->area->camera->mode != CAMERA_MODE_FIXED)
             set_camera_mode(gMarioState->area->camera, CAMERA_MODE_FIXED, 30);
         //gMarioState->area->camera->yaw += 0x2000;
@@ -124,14 +126,14 @@ void bhv_small_snake_loop(void) {
         pos[0] = gMarioObject->oPosX;
         pos[1] = gMarioObject->oPosY;
         pos[2] = gMarioObject->oPosZ;
-        vec3f_set(gPlayerCameraState->pos, pos[0] + 1200, pos[1] + 200, pos[2] - 1200);
+        vec3f_set(gPlayerCameraState->pos, pos[0] + 1200, pos[1] + 350, pos[2] - 1200);
         o->oAction = 1;
     }
-    else if (o->oDistanceToMario >= 7000.0f && o->oAction == 1) {
+    else if (o->oDistanceToMario >= range && o->oAction == 1) {
         set_camera_mode(gMarioState->area->camera, gMarioState->area->camera->defMode, 30);
         o->oAction = 0;
     }
-    else if (o->oAction == 1 && o->oDistanceToMario < 7000.0f) {
+    //else if (o->oAction == 1 && o->oDistanceToMario < 7000.0f) {
         // Vec3f pos; 
         // pos[0] = gMarioObject->oPosX;
         // pos[1] = gMarioObject->oPosY;
@@ -141,5 +143,5 @@ void bhv_small_snake_loop(void) {
         //vec3f_set(gPlayerCameraState->pos, gMarioState->pos[0], gMarioState->pos[1] +1000, gMarioState->pos[2]);
         
         //approach_f32_asymptotic_bool(&c->focus[0], gCutsceneFocus->oPosX, 0.15f);
-    }
+    //}
 }
