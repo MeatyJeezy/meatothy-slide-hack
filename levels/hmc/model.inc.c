@@ -9030,6 +9030,20 @@ Gfx hmc_dl_underwaterslope_001_mesh_layer_1_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
+Vtx hmc_dl_underwaterslope_002_mesh_layer_1_vtx_0[4] = {
+	{{ {-9191, 0, 2244}, 0, {-16, 1008}, {0, 127, 0, 255} }},
+	{{ {9191, 0, 2244}, 0, {1008, 1008}, {0, 127, 0, 255} }},
+	{{ {9191, 0, -2244}, 0, {1008, -16}, {0, 127, 0, 255} }},
+	{{ {-9191, 0, -2244}, 0, {-16, -16}, {0, 127, 0, 255} }},
+};
+
+Gfx hmc_dl_underwaterslope_002_mesh_layer_1_tri_0[] = {
+	gsSPVertex(hmc_dl_underwaterslope_002_mesh_layer_1_vtx_0 + 0, 4, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 2, 3, 0),
+	gsSPEndDisplayList(),
+};
+
 Vtx hmc_dl_wallkickrocks_mesh_layer_1_vtx_0[584] = {
 	{{ {-766, -74, -792}, 0, {-1103, 2095}, {129, 0, 0, 255} }},
 	{{ {-766, -74, 792}, 0, {-1108, 52}, {129, 0, 0, 255} }},
@@ -10733,6 +10747,12 @@ Gfx hmc_dl_underwaterslope_mesh_layer_1[] = {
 Gfx hmc_dl_underwaterslope_001_mesh_layer_1[] = {
 	gsSPDisplayList(mat_hmc_dl_vslippery),
 	gsSPDisplayList(hmc_dl_underwaterslope_001_mesh_layer_1_tri_0),
+	gsSPEndDisplayList(),
+};
+
+Gfx hmc_dl_underwaterslope_002_mesh_layer_1[] = {
+	gsSPDisplayList(mat_hmc_dl_vslippery),
+	gsSPDisplayList(hmc_dl_underwaterslope_002_mesh_layer_1_tri_0),
 	gsSPEndDisplayList(),
 };
 

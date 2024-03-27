@@ -52,6 +52,7 @@ const GeoLayout hmc_area_1_geo[] = {
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 1347, 4237, -11724, hmc_dl_stoneshore_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -141, 2672, -8234, -4, 0, 3, hmc_dl_underwaterslope_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -16321, 1455, -8234, 0, 0, 4, hmc_dl_underwaterslope_001_mesh_layer_1),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -25508, 1455, 2491, 0, 90, 4, hmc_dl_underwaterslope_002_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, 14286, -161, -19133, 0, 90, 0, hmc_dl_wallkickrocks_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -11297, 4347, -8202, hmc_dl_Water_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -25499, 4104, 3042, 0, 90, 0, hmc_dl_Water_001_mesh_layer_1),
