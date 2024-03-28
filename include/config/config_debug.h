@@ -93,4 +93,4 @@
 /**
  * Intentionally crash the game whenever a runtime assertion fails (also invoked by the DEBUG define in the Makefile).
  */
-#define DEBUG_ASSERTIONS
+//#define DEBUG_ASSERTIONS

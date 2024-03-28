@@ -1877,6 +1877,9 @@ void check_death_barrier(struct MarioState *m) {
     if (m->pos[1] < m->floorHeight + 2048.0f) {
         if (level_trigger_warp(m, WARP_OP_WARP_FLOOR) == 20 && !(m->flags & MARIO_FALL_SOUND_PLAYED)) {
             play_sound(SOUND_MARIO_WAAAOOOW, m->marioObj->header.gfx.cameraToObject);
+            level_control_timer(TIMER_CONTROL_STOP);
+            level_control_timer(TIMER_CONTROL_HIDE);
+            sPssSlideStarted = FALSE;
         }
     }
 }
@@ -1903,11 +1906,19 @@ void pss_begin_slide(UNUSED struct MarioState *m) {
 void pss_end_slide(struct MarioState *m) {
     //! This flag isn't set on death or level entry, allowing double star spawn
     if (sPssSlideStarted) {
+        // NEW CHANGING THIS to spawn different stars on each level
         u16 slideTime = level_control_timer(TIMER_CONTROL_STOP);
-        if (slideTime < 630) {
-            m->marioObj->oBehParams = (1 << 24);
-            spawn_default_star(-6358.0f, -4300.0f, 4700.0f);
+        // for area 1:
+        if (gCurrentArea->index == 1 && slideTime < 630) { 
+            spawn_default_star(m->pos[0], m->floorHeight + 250.0f, m->pos[2]);
         }
+        if (gCurrentArea->index == 2 && slideTime < 630) {
+            spawn_default_star(m->pos[0], m->floorHeight + 250.0f, m->pos[2]);
+        }
+        // else if (slideTime < 630) {
+        //     m->marioObj->oBehParams = (1 << 24);
+        // }
+        
         sPssSlideStarted = FALSE;
     }
 }
@@ -1923,6 +1934,7 @@ void mario_handle_special_floors(struct MarioState *m) {
         switch (floorType) {
             case SURFACE_DEATH_PLANE:
                 check_death_barrier(m);
+                
             case SURFACE_VERTICAL_WIND: // CHANGED no longer deathplane mario when using vertical wind
                 //check_death_barrier(m);
                 break;
