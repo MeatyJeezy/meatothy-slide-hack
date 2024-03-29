@@ -203,7 +203,6 @@ const LevelScript script_func_global_1[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BOUNCE_SHROOM, bounce_shroom_geo),
     LOAD_MODEL_FROM_GEO(MODEL_WATER_WHEEL, water_wheel_geo),
     LOAD_MODEL_FROM_GEO(MODEL_ROLLING_SLIDE, rolling_slide_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_HMC_ROLLING_ROCK, hmc_geo_000548),
     RETURN(),
 };
 
