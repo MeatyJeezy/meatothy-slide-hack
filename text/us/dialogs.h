@@ -2063,24 +2063,22 @@ whatsoever for those who\n\
 get dizzy and pass out\n\
 from running around\n\
 this post."))
-
+// NEW Changed these for end of course dialog.
 DEFINE_DIALOG(DIALOG_166, 1, 4, 30, 200, _("\
-I'll be back soon.\n\
-I'm out training now,\n\
-so come back later.\n\
-//--Koopa the Quick"))
-
+Time required for star:\n\
+XXXX\n\
+\n\
+\n\
+Author time:\n\
+XXXX"))
+// changed
 DEFINE_DIALOG(DIALOG_167, 1, 4, 30, 200, _("\
-Princess Toadstool's\n\
-castle is just ahead.\n\
+Time required for star:\n\
+XXXX\n\
 \n\
 \n\
-Press [A] to jump, [Z] to\n\
-crouch, and [B] to punch,\n\
-read a sign, or grab\n\
-something.\n\
-Press [B] again to throw\n\
-something you're holding."))
+Author time:\n\
+XXXX"))
 
 DEFINE_DIALOG(DIALOG_168, 1, 5, 30, 200, _("\
 Hey! Knock it off! That's\n\

@@ -17,7 +17,7 @@ void bhv_single_falling_leaf() {
         o->oAngleVelYaw = 162 + (random_u16() %60);
     }
     // After x frames, start fade out
-    if (o->oTimer++ > 240 || o->oDistanceToMario > 4000.0f) {
+    if (o->oTimer++ > 240 || o->oDistanceToMario > 7000.0f) {
         //After fading out all the way disable the leaf
         if ((o->oOpacity -= 6) <= 1) {
             obj_mark_for_deletion(o);
@@ -60,9 +60,9 @@ void bhv_falling_leaves_loop() {
     //o->oAngleVelRoll = random_float();
     
     o->oTimer += 1 + random_u16() % 3;
-    if(o->oTimer > 60) {
+    if(o->oTimer > 90) {
         //spawn new leaf if mario is close enough
-        if (o->oDistanceToMario < 4000.0f) {
+        if (o->oDistanceToMario < 7900.0f) {
             spawn_object_relative(0, 0, 0, 0, o, MODEL_FALLING_LEAF, bhvSingleFallingLeaf);
         }
         o->oTimer = 0;
