@@ -3,9 +3,11 @@
 const GeoLayout bob_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -11793, -312, 1007, bob_dl_Circle_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, bob_dl_Cube_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_ALPHA, bob_dl_Cube_mesh_layer_4),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -6446, -5451, 0, bob_dl_deathplane_mesh_layer_5),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -15562, 2937, 0, 0, -94, 90, bob_dl_Fappy_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, bob_dl_Roofs_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),

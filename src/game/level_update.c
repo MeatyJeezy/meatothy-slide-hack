@@ -1390,3 +1390,25 @@ s32 lvl_play_the_end_screen_sound(UNUSED s16 initOrUpdate, UNUSED s32 levelNum) 
     play_sound(SOUND_MENU_THANK_YOU_PLAYING_MY_GAME, gGlobalSoundSource);
     return TRUE;
 }
+// NEW Shows all undiscovered secrets
+s32 show_secret_total() {
+    s16 textOffset = 120;
+    
+    if (!(save_file_get_flags() & SAVE_FLAG_UNLOCKED_JRB_DOOR)) {
+        print_text(20, 100, "Caught in BLJ");
+        textOffset -= 20;
+    } 
+    if (!(save_file_get_flags() & SAVE_FLAG_UNLOCKED_CCM_DOOR)) {
+        print_text(20, 80, "Video game waterfalls");
+        textOffset -= 20;
+    } 
+    // offset not changed, therefore all secrets discovered.
+    if (textOffset == 120) {
+        print_text(20, 100, "All Secrets Discovered!");
+    }
+    else {
+        print_text(20, 120, "Secrets Undiscovered:");
+    }
+        
+    return TRUE;
+}

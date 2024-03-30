@@ -1938,19 +1938,11 @@ goes under, you'll be\n\
 smothered.\n\
 The dark areas are\n\
 bottomless pits."))
-
-DEFINE_DIALOG(DIALOG_158, 1, 6, 30, 200, _("\
-1. If you jump repeatedly\n\
-and time it right, you'll\n\
-jump higher and higher.\n\
-If you run really fast and\n\
-time three jumps right,\n\
-you can do a Triple Jump.\n\
-2. Jump into a solid wall,\n\
-then jump again when you\n\
-hit the wall. You can\n\
-bounce to a higher level\n\
-using this Wall Kick."))
+// NEW RIP message for fappy grave
+DEFINE_DIALOG(DIALOG_158, 1, 3, 10, 160, _("\
+            ~\n\
+          @AF30FFFFR.I.P.@--------\n\
+            ~"))
 // NEW used for BLJ cheater message
 DEFINE_DIALOG(DIALOG_159, 1, 4, 30, 200, _("\
 Did you really think\n\

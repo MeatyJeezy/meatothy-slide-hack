@@ -18,6 +18,7 @@
 
 const LevelScript level_ending_entry_loop[] = {
     SLEEP(/*frames*/ 1),
+    CALL(/*arg*/ 0, /*func*/ show_secret_total),
     JUMP(level_ending_entry_loop), // (loop sleep 1 forever)
 };
 

@@ -60,6 +60,7 @@ const LevelScript level_bob_entry[] = {
 		MARIO_POS(0x01, 0, 1142, 200, 0),
 		OBJECT(MODEL_VCUTM_WARP_PIPE, -12118, 890, 1095, 0, 90, 0, 0x000B0000, bhvWarpPipe),
 		OBJECT(MODEL_VCUTM_WARP_PIPE, -12118, 890, -1132, 0, 90, 0, 0x000C0000, bhvWarpPipe),
+		OBJECT(MODEL_NONE, -15345, 2375, 18, 0, 90, 0, 0x009E0000, bhvSignOnWall),
 		OBJECT(MODEL_NONE, 1206, 552, 0, 0, 90, 0, 0x000A0000, bhvSpinAirborneWarp),
 		TERRAIN(bob_area_1_collision),
 		MACRO_OBJECTS(bob_area_1_macro_objs),

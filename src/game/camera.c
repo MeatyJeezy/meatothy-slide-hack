@@ -8638,9 +8638,16 @@ void cutscene_read_message(struct Camera *c) {
             break;
         // Leave the dialog.
         case 1:
-            move_mario_head_c_up(c);
-            update_c_up(c, c->focus, c->pos);
-
+            if (get_dialog_id() != 0x9E) {
+                move_mario_head_c_up(c);
+                update_c_up(c, c->focus, c->pos);
+            }
+        // NEW custom cam for fappy statue
+            else {
+                approach_f32_asymptotic_bool(&c->pos[1], gMarioObject->oPosY + 2500.0f, 0.09f);
+                approach_f32_asymptotic_bool(&c->pos[0], gMarioObject->oPosX + 4500.0f, 0.09f);
+                approach_f32_asymptotic_bool(&c->pos[2], gMarioObject->oPosZ - 1000.0f, 0.05f);
+            }
             // This could cause softlocks. If a message starts one frame after another one closes, the
             // cutscene will never end.
             if (get_dialog_id() == DIALOG_NONE) {

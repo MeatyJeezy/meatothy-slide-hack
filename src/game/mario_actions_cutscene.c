@@ -497,6 +497,10 @@ s32 act_reading_sign(struct MarioState *m) {
             if (m->actionTimer++ == 10) {
                 create_dialog_inverted_box(m->usedObj->oBehParams2ndByte);
                 m->actionState = ACT_STATE_READING_SIGN_IN_DIALOG;
+                // NEW custom camera angle for Fappy statue.
+                if (m->usedObj->oBehParams2ndByte == 0x9E) {
+                    gPlayerCameraState->pos[1] += 1000.0f;
+                }
             }
             break;
         case ACT_STATE_READING_SIGN_IN_DIALOG:
