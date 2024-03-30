@@ -134,7 +134,7 @@
  * be interrupted with text
  * Uncomment this to fix this bug, and frustrate speedrunners
  */
-#define BUGFIX_DIALOG_TIME_STOP
+//#define BUGFIX_DIALOG_TIME_STOP
 
 /**
  * Enables Platform Displacement 2, an upgrade to the physics involving moving platforms and how Mario interacts with them.

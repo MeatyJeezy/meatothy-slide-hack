@@ -21,7 +21,7 @@ void boulder_act_1(void) {
         o->oForwardVel = 200.0f;
     }
 
-    if (o->oPosY < -1000.0f) { // changed
+    if (o->oPosY < -8000.0f) { // changed
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     }
     if ( o->oDistanceToMario > 9000.0f) {

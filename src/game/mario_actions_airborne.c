@@ -627,6 +627,9 @@ s32 act_long_jump(struct MarioState *m) {
     } else {
         animation = MARIO_ANIM_SLOW_LONGJUMP;
     }
+    if (m->forwardVel < -200.0f) {
+        m->flags |= MARIO_DID_BLJ; // NEW detect if a BLJ occurred and set a flag
+    }
 
     play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, SOUND_MARIO_YAHOO);
 

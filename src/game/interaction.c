@@ -1904,17 +1904,48 @@ void pss_begin_slide(UNUSED struct MarioState *m) {
 }
 
 void pss_end_slide(struct MarioState *m) {
+    // NEW detect BLJ cheating flag:
+    if (m->flags & MARIO_DID_BLJ ) {
+        
+        
+        if (sPssSlideStarted) {
+            seq_player_fade_out(SEQ_PLAYER_LEVEL, 60);
+            level_control_timer(TIMER_CONTROL_STOP);
+            sPssSlideStarted = FALSE;
+            set_mario_action(m, ACT_READING_AUTOMATIC_DIALOG, DIALOG_159);
+            //create_dialog_box(DIALOG_159);
+            //enable_time_stop_including_mario(); // freeze in place
+        }
+        else if (get_dialog_id() >= 0) { // trigger this so the subsequent conditionals fail lol 3am code type beat
+            //enable_time_stop_including_mario();
+        }
+        else if (get_dialog_id() < 0 && !sPssSlideStarted) { // dialog closed, warp to GBJ
+            disable_time_stop_including_mario();
+            if(!(save_file_get_flags() & SAVE_FLAG_UNLOCKED_JRB_DOOR)) {
+                save_file_set_flags(SAVE_FLAG_UNLOCKED_JRB_DOOR);
+                save_file_do_save(gCurrSaveFileNum - 1);
+            }
+            m->flags |= ~MARIO_DID_BLJ;
+            spawn_object_relative(0x7A, 0, 0, 0, gMarioState->marioObj, MODEL_NONE, bhvWarp);
+        }
+        else  { // timer hadnt started, not penalized for cheating
+            m->flags |= ~MARIO_DID_BLJ;
+        } 
+    }
+    // dialog box open
+    else if (m->flags & MARIO_DID_BLJ && get_dialog_id() >= 0) {
+        
+    }
     //! This flag isn't set on death or level entry, allowing double star spawn
-    if (sPssSlideStarted) {
+    else if (sPssSlideStarted) {
         // NEW CHANGING THIS to spawn different stars on each level
         u16 slideTime = level_control_timer(TIMER_CONTROL_STOP);
-        // for area 1:
+
+        // if not cheated, do this for all area 1's:
         if (gCurrentArea->index == 1 && slideTime < 630) { 
             spawn_default_star(m->pos[0], m->floorHeight + 250.0f, m->pos[2]);
         }
-        if (gCurrentArea->index == 2 && slideTime < 630) {
-            spawn_default_star(m->pos[0], m->floorHeight + 250.0f, m->pos[2]);
-        }
+
         // else if (slideTime < 630) {
         //     m->marioObj->oBehParams = (1 << 24);
         // }

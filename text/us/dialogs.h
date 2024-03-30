@@ -1951,14 +1951,44 @@ then jump again when you\n\
 hit the wall. You can\n\
 bounce to a higher level\n\
 using this Wall Kick."))
-
-DEFINE_DIALOG(DIALOG_159, 1, 6, 30, 200, _("\
-3. If you stop, press [Z]\n\
-to crouch, then jump, you\n\
-can perform a Backward\n\
-Somersault. To do a Long\n\
-Jump, run fast, press [Z],\n\
-then jump."))
+// NEW used for BLJ cheater message
+DEFINE_DIALOG(DIALOG_159, 1, 4, 30, 200, _("\
+Did you really think\n\
+I wouldn't expect\n\
+you to BLJ there?\n\
+\n\
+Hope it was worth it.\n\
+Because now you're\n\
+headed to an\n\
+Honest-to-Goodness,\n\
+Real-Life,\n\
+\n\
+\n\
+\n\
+Authentic,\n\
+\n\
+\n\
+\n\
+All-American,\n\
+\n\
+\n\
+\n\
+GAY\n\
+\n\
+\n\
+\n\
+BABY\n\
+\n\
+\n\
+\n\
+JAIL."))
+// DEFINE_DIALOG(DIALOG_159, 1, 6, 30, 200, _("\
+// 3. If you stop, press [Z]\n\
+// to crouch, then jump, you\n\
+// can perform a Backward\n\
+// Somersault. To do a Long\n\
+// Jump, run fast, press [Z],\n\
+// then jump."))
 
 DEFINE_DIALOG(DIALOG_160, 1, 4, 30, 200, _("\
 Press [B] while running\n\

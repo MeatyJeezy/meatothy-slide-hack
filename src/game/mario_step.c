@@ -15,7 +15,7 @@
 static s16 sMovingSandSpeeds[] = { 12, 8, 4, 0 };
 
 struct Surface gWaterSurfacePseudoFloor = {
-    SURFACE_NOT_SLIPPERY,      // type NEW changed type from Ver Slippery
+    SURFACE_VERY_SLIPPERY,      // type NEW changed type from Ver Slippery // changed it back
     0x0,                        // force
     0x0,                        // flags
      0,                         // room

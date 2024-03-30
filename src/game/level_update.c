@@ -165,7 +165,7 @@ u16 level_control_timer(s32 timerOp) {
             break;
 
         case TIMER_CONTROL_HIDE:
-            gHudDisplay.flags &= ~HUD_DISPLAY_FLAG_TIMER;
+            gHudDisplay.flags |= ~HUD_DISPLAY_FLAG_TIMER; // TEMPORARY remember to change this back  to &= if it messes shit up lol
             sTimerRunning = FALSE;
             gHudDisplay.timer = 0;
             break;
@@ -706,6 +706,7 @@ void initiate_painting_warp(void) {
  */
 s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
     s32 fadeMusic = TRUE;
+    gMarioState->flags &= ~MARIO_DID_BLJ; // NEW Remove BLJ flag on warp
 
     if (sDelayedWarpOp == WARP_OP_NONE) {
         m->invincTimer = -1;
@@ -1353,6 +1354,8 @@ s32 lvl_set_current_level(UNUSED s16 initOrUpdate, s32 levelNum) {
     sWarpCheckpointActive = FALSE;
     gCurrLevelNum = levelNum;
     gCurrCourseNum = gLevelToCourseNumTable[levelNum - 1];
+	if (gCurrLevelNum == LEVEL_BBH) return 0;
+    gMarioState->flags |= ~MARIO_DID_BLJ; // NEW Remove BLJ flag on level load
 	if (gCurrLevelNum == LEVEL_BOB) return 0;
 	if (gCurrLevelNum == LEVEL_PSS) return 0;
 	if (gCurrLevelNum == LEVEL_HMC) return 0;

@@ -1356,6 +1356,9 @@ void update_mario_inputs(struct MarioState *m) {
             gCameraMovementFlags &= ~CAM_MOVE_C_UP_MODE;
         }
     }
+    if (m->flags & MARIO_DID_BLJ) { // NEW TEMPORARY DEBUG
+        print_text(20, 20, "BLJ DETECTED");
+    }
 
     if (!(m->input & (INPUT_NONZERO_ANALOG | INPUT_A_PRESSED))) {
         m->input |= INPUT_IDLE;
