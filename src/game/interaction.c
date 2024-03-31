@@ -1945,7 +1945,7 @@ void pss_end_slide(struct MarioState *m) {
         if (gCurrLevelNum == LEVEL_HMC && slideTime <= 3600) { 
             spawn_default_star(m->pos[0], m->floorHeight + 250.0f, m->pos[2]);
         }
-        if (gCurrLevelNum == LEVEL_PSS && slideTime <= 1800) { 
+        if (gCurrLevelNum == LEVEL_TTM && slideTime <= 1800) { 
             spawn_default_star(m->pos[0], m->floorHeight + 250.0f, m->pos[2]);
         }
 
