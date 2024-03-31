@@ -6110,7 +6110,6 @@ const BehaviorScript bhvFallingLeaves[] = {
 const BehaviorScript bhvSingleFallingLeaf[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
-    SET_INT(oOpacity, 255),
     SET_FLOAT(oDrawingDistance, 9000),
     //SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ -90, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     BEGIN_LOOP(),

@@ -507,30 +507,54 @@ static const Gfx hmc_seg7_painting_dl_070254E0[] = {
 const Texture *const hmc_seg7_painting_textures_07025518[] = {
     hmc_seg7_texture_07024CE0,
 };
-
-// 0x0702551C (PaintingData)
 struct Painting cotmc_painting = {
-    /* id */ 0x000E,
+    /* id */ 0x0007,
     /* Image Count */ 0x01,
     /* Texture Type */ PAINTING_ENV_MAP,
-    /* Floor Status */ 0x00, 0x00 , 0x00 /* which of the painting's nearby special floors Mario's on */,
+    /* Floor Status */ 0x00, 0x00, 0x00 /* which of the painting's nearby special floors Mario's on */,
     /* Ripple Status */ 0x00,
-    /* Rotation */ 270.0f,  0.0f,
-    /* Position */ 2989.055908f, -4485.120117f, 5135.359863f,
+    /* Rotation */    270.0f, 90.0f,
+    /* Position */ -30000.0f, 10.0f, 17000.0f, //3456.0f, -1075.2f, 1587.2f, CHANGED
     /*                         curr   passive     entry */
     /* Ripple Magnitude */     0.0f,    10.0f,    30.0f,
     /* Ripple Decay */         1.0f,     1.0f,    0.98f,
     /* Ripple Rate */          0.0f,    0.05f,    0.05f,
     /* Ripple Dispersion */    0.0f,    15.0f,    15.0f,
     /* Curr Ripple Timer */    0.0f,
-    /* Curr Ripple x, y */     0.0f,  0.0f,
+    /* Curr Ripple x, y */     0.0f,   0.0f,
     /* Normal DList */ hmc_seg7_painting_dl_070254E0,
     /* Texture Maps */ hmc_seg7_painting_texture_maps_07024CD4,
     /* Textures */     hmc_seg7_painting_textures_07025518,
     /* Texture w, h */ 32, 32,
     /* Ripple DList */ hmc_seg7_painting_dl_070242D0,
     /* Ripple Trigger */ RIPPLE_TRIGGER_CONTINUOUS,
-    /* Alpha */ 0xFF,
+    /* Alpha */ 0xD4,
     /* Mario Below */  0x00, 0x00, 0x00, /* Whether or not Mario is below the painting */
-    /* Size */  723.968018f,
+    /* Size */  919.2f,
 };
+// 0x0702551C (PaintingData)
+// struct Painting cotmc_painting = {
+//     /* id */ 0x0007,
+//     /* Image Count */ 0x01,
+//     /* Texture Type */ PAINTING_ENV_MAP,
+//     /* Floor Status */ 0x00, 0x00 , 0x00 /* which of the painting's nearby special floors Mario's on */,
+//     /* Ripple Status */ 0x00,
+//     /* Rotation */ 270.0f,  0.0f,
+//     /* Position */ 2989.055908f, -4485.120117f, 5135.359863f,
+//     /*                         curr   passive     entry */
+//     /* Ripple Magnitude */     0.0f,    10.0f,    30.0f,
+//     /* Ripple Decay */         1.0f,     1.0f,    0.98f,
+//     /* Ripple Rate */          0.0f,    0.05f,    0.05f,
+//     /* Ripple Dispersion */    0.0f,    15.0f,    15.0f,
+//     /* Curr Ripple Timer */    0.0f,
+//     /* Curr Ripple x, y */     0.0f,  0.0f,
+//     /* Normal DList */ hmc_seg7_painting_dl_070254E0,
+//     /* Texture Maps */ hmc_seg7_painting_texture_maps_07024CD4,
+//     /* Textures */     hmc_seg7_painting_textures_07025518,
+//     /* Texture w, h */ 32, 32,
+//     /* Ripple DList */ hmc_seg7_painting_dl_070242D0,
+//     /* Ripple Trigger */ RIPPLE_TRIGGER_CONTINUOUS,
+//     /* Alpha */ 0xFF,
+//     /* Mario Below */  0x00, 0x00, 0x00, /* Whether or not Mario is below the painting */
+//     /* Size */  723.968018f,
+// };

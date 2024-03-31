@@ -1579,33 +1579,58 @@ struct Painting ddd_painting = {
     /* Mario Below */  0x00, 0x00, 0x00, /* Whether or not Mario is below the painting */
     /* Size */  919.2f,
 };
-
+// NEW changed to HMC painting :)
 // 0x070239E0 - 0x07023A58
 struct Painting wdw_painting = {
-    /* id */ 0x0008,
-    /* Image Count */ 0x02,
-    /* Texture Type */ PAINTING_IMAGE,
+    /* id */ 0x0007,
+    /* Image Count */ 0x01,
+    /* Texture Type */ PAINTING_ENV_MAP,
     /* Floor Status */ 0x00, 0x00, 0x00 /* which of the painting's nearby special floors Mario's on */,
     /* Ripple Status */ 0x00,
-    /* Rotation */     0.0f,     0.0f,
-    /* Position */ -966.656f, 1305.6f, -143.36f,
+    /* Rotation */    270.0f, 90.0f,
+    /* Position */ 7300.0f, -437.0f, -8300.0f, //3456.0f, -1075.2f, 1587.2f, CHANGED
     /*                         curr   passive     entry */
-    /* Ripple Magnitude */     0.0f,    20.0f,    80.0f,
-    /* Ripple Decay */         1.0f,  0.9608f,  0.9524f,
-    /* Ripple Rate */          0.0f,    0.24f,    0.14f,
-    /* Ripple Dispersion */    0.0f,    40.0f,    30.0f,
+    /* Ripple Magnitude */     0.0f,    10.0f,    30.0f,
+    /* Ripple Decay */         1.0f,     1.0f,    0.98f,
+    /* Ripple Rate */          0.0f,    0.05f,    0.05f,
+    /* Ripple Dispersion */    0.0f,    15.0f,    15.0f,
     /* Curr Ripple Timer */    0.0f,
-    /* Curr Ripple x, y */     0.0f,     0.0f,
-    /* Normal DList */ inside_castle_seg7_painting_dl_07023290,
-    /* Texture Maps */ inside_castle_seg7_painting_texture_maps_07022518,
-    /* Textures */     inside_castle_seg7_painting_textures_070235F8,
-    /* Texture w, h */ 64, 32,
-    /* Ripple DList */ inside_castle_seg7_painting_dl_07021AC0,
-    /* Ripple Trigger */ RIPPLE_TRIGGER_PROXIMITY,
-    /* Alpha */ 0xFF,
+    /* Curr Ripple x, y */     0.0f,   0.0f,
+    /* Normal DList */ inside_castle_seg7_painting_dl_070235B8,
+    /* Texture Maps */ inside_castle_seg7_painting_env_map_texture_maps_07023044,
+    /* Textures */     inside_castle_seg7_painting_textures_070235F4,
+    /* Texture w, h */ 32, 32,
+    /* Ripple DList */ inside_castle_seg7_painting_dl_07022640,
+    /* Ripple Trigger */ RIPPLE_TRIGGER_CONTINUOUS,
+    /* Alpha */ 0xD4,
     /* Mario Below */  0x00, 0x00, 0x00, /* Whether or not Mario is below the painting */
-    /* Size */  614.0f,
+    /* Size */  919.2f,
 };
+// struct Painting wdw_painting = {
+//     /* id */ 0x0008,
+//     /* Image Count */ 0x02,
+//     /* Texture Type */ PAINTING_IMAGE,
+//     /* Floor Status */ 0x00, 0x00, 0x00 /* which of the painting's nearby special floors Mario's on */,
+//     /* Ripple Status */ 0x00,
+//     /* Rotation */     0.0f,     0.0f,
+//     /* Position */ -966.656f, 1305.6f, -143.36f,
+//     /*                         curr   passive     entry */
+//     /* Ripple Magnitude */     0.0f,    20.0f,    80.0f,
+//     /* Ripple Decay */         1.0f,  0.9608f,  0.9524f,
+//     /* Ripple Rate */          0.0f,    0.24f,    0.14f,
+//     /* Ripple Dispersion */    0.0f,    40.0f,    30.0f,
+//     /* Curr Ripple Timer */    0.0f,
+//     /* Curr Ripple x, y */     0.0f,     0.0f,
+//     /* Normal DList */ inside_castle_seg7_painting_dl_07023290,
+//     /* Texture Maps */ inside_castle_seg7_painting_texture_maps_07022518,
+//     /* Textures */     inside_castle_seg7_painting_textures_070235F8,
+//     /* Texture w, h */ 64, 32,
+//     /* Ripple DList */ inside_castle_seg7_painting_dl_07021AC0,
+//     /* Ripple Trigger */ RIPPLE_TRIGGER_PROXIMITY,
+//     /* Alpha */ 0xFF,
+//     /* Mario Below */  0x00, 0x00, 0x00, /* Whether or not Mario is below the painting */
+//     /* Size */  614.0f,
+// };
 
 // 0x07023A58 - 0x07023AD0
 struct Painting thi_tiny_painting = {

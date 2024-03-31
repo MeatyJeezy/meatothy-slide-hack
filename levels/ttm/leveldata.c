@@ -40,7 +40,7 @@
 #include "levels/ttm/areas/1/21/1.inc.c"
 #include "levels/ttm/areas/1/21/2.inc.c"
 #include "levels/ttm/rolling_log/model.inc.c"
-#include "levels/ttm/areas/1/painting.inc.c"
+#include "levels/ttm/area_1/painting.inc.c" // NEW changed
 #include "levels/ttm/star_cage/1.inc.c"
 #include "levels/ttm/star_cage/2.inc.c"
 #include "levels/ttm/rolling_log/collision.inc.c"
@@ -68,3 +68,5 @@
 #include "levels/ttm/areas/2/macro.inc.c"
 #include "levels/ttm/areas/3/macro.inc.c"
 #include "levels/ttm/areas/4/macro.inc.c"
+
+#include "levels/ttm/leveldata.inc.c"

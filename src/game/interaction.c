@@ -1907,7 +1907,7 @@ void pss_end_slide(struct MarioState *m) {
     // NEW detect BLJ cheating flag:
     if (m->flags & MARIO_DID_BLJ ) {
         
-        
+        // All this fucked up looking code was to prevent me from having to use one more global variable idk why I did it tbh
         if (sPssSlideStarted) {
             seq_player_fade_out(SEQ_PLAYER_LEVEL, 60);
             level_control_timer(TIMER_CONTROL_STOP);
@@ -1916,7 +1916,7 @@ void pss_end_slide(struct MarioState *m) {
             //create_dialog_box(DIALOG_159);
             //enable_time_stop_including_mario(); // freeze in place
         }
-        else if (get_dialog_id() >= 0) { // trigger this so the subsequent conditionals fail lol 3am code type beat
+        else if (get_dialog_id() >= 0) { // trigger this so the subsequent conditionals fail lol
             //enable_time_stop_including_mario();
         }
         else if (get_dialog_id() < 0 && !sPssSlideStarted) { // dialog closed, warp to GBJ
@@ -1942,7 +1942,10 @@ void pss_end_slide(struct MarioState *m) {
         u16 slideTime = level_control_timer(TIMER_CONTROL_STOP);
 
         // if not cheated, do this for all area 1's:
-        if (gCurrentArea->index == 1 && slideTime < 630) { 
+        if (gCurrLevelNum == LEVEL_HMC && slideTime <= 3600) { 
+            spawn_default_star(m->pos[0], m->floorHeight + 250.0f, m->pos[2]);
+        }
+        if (gCurrLevelNum == LEVEL_PSS && slideTime <= 1800) { 
             spawn_default_star(m->pos[0], m->floorHeight + 250.0f, m->pos[2]);
         }
 

@@ -2085,22 +2085,22 @@ whatsoever for those who\n\
 get dizzy and pass out\n\
 from running around\n\
 this post."))
-// NEW Changed these for end of course dialog.
+// NEW Changed these for end of course dialog on level 2
 DEFINE_DIALOG(DIALOG_166, 1, 4, 30, 200, _("\
-Time required for star:\n\
-XXXX\n\
+@F0602FFFTime required for star:\n\
+@FFDF70FF2'00'0\n\
 \n\
 \n\
-Author time:\n\
-XXXX"))
-// changed
+@10EF1AFFAuthor time:\n\
+@FFDF70FF1'43'3"))
+// changed end of course level 1
 DEFINE_DIALOG(DIALOG_167, 1, 4, 30, 200, _("\
-Time required for star:\n\
-XXXX\n\
+@F0602FFFTime required for star:\n\
+@FFDF70FF1'00'0\n\
 \n\
 \n\
-Author time:\n\
-XXXX"))
+@10EF1AFFAuthor time:\n\
+@FFDF70FFX'XX'X"))
 
 DEFINE_DIALOG(DIALOG_168, 1, 5, 30, 200, _("\
 Hey! Knock it off! That's\n\

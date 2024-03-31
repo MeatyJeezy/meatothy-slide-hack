@@ -17,11 +17,10 @@ void bhv_single_falling_leaf() {
         o->oAngleVelYaw = 162 + (random_u16() %60);
     }
     // After x frames, start fade out
-    if (o->oTimer++ > 240 || o->oDistanceToMario > 7000.0f) {
+    if (o->oTimer++ > 280 || o->oDistanceToMario > 7000.0f) {
         //After fading out all the way disable the leaf
-        if ((o->oOpacity -= 6) <= 1) {
+        
             obj_mark_for_deletion(o);
-        }
     }
     // Stop moving down when on a floor
     cur_obj_update_floor_height();

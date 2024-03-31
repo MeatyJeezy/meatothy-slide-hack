@@ -7,7 +7,7 @@ const GeoLayout pss_area_1_geo[] = {
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -6, -10685, 1, pss_dl_deathplane_mesh_layer_5),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -22147, 2558, 3788, 7, 166, -17, pss_dl_endramp_001_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -17326, 3740, 4077, pss_dl_endramp_002_mesh_layer_1),
-		GEO_DISPLAY_LIST(LAYER_ALPHA, pss_dl_failplat_mesh_layer_4),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, pss_dl_failplat_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_ALPHA, 0, 976, 0, pss_dl_HouseMain_mesh_layer_4),
 		GEO_OPEN_NODE(),
 			GEO_DISPLAY_LIST(LAYER_OPAQUE, pss_dl_HouseMain_mesh_layer_1),

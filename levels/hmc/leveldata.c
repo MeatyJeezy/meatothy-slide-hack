@@ -48,7 +48,7 @@
 #include "levels/hmc/rolling_rock/model.inc.c"
 #include "levels/hmc/rolling_rock_fragment_1/model.inc.c"
 #include "levels/hmc/rolling_rock_fragment_2/model.inc.c"
-#include "levels/hmc/areas/1/painting.inc.c"
+#include "levels/hmc/area_1/painting.inc.c" // New changed
 #include "levels/hmc/areas/1/collision.inc.c"
 #include "levels/hmc/areas/1/macro.inc.c"
 #include "levels/hmc/areas/1/room.inc.c"

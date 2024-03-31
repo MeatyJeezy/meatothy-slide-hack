@@ -4,8 +4,8 @@ static struct ObjectHitbox sLaunchBarrelHitbox = {
     /* damageOrCoinValue: */ 1,
     /* health:            */ 0,
     /* numLootCoins:      */ -1,
-    /* radius:            */ 99,
-    /* height:            */ 88,
+    /* radius:            */ 130,
+    /* height:            */ 140,
     /* hurtboxRadius:     */ 0,
     /* hurtboxHeight:     */ 0,
 };

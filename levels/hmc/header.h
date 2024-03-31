@@ -2,6 +2,7 @@
 #define HMC_HEADER_H
 
 #include "types.h"
+#include "game/paintings.h"
 #include "game/moving_texture.h"
 
 // geo
@@ -76,6 +77,7 @@ extern const Gfx hmc_seg7_dl_07024268[];
 extern const Gfx hmc_seg7_dl_070242A0[];
 extern const Texture *const hmc_seg7_painting_textures_07025518[];
 extern struct Painting cotmc_painting;
+extern struct Painting ddd_painting;
 extern const Collision hmc_seg7_collision_level[];
 extern const MacroObject hmc_seg7_macro_objs[];
 extern const RoomData hmc_seg7_rooms[];

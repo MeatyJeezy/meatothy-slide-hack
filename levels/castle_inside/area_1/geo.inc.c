@@ -7,7 +7,7 @@ const GeoLayout castle_inside_area_1_geo[] = {
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, castle_inside_dl_Cube_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_ALPHA, castle_inside_dl_Cube_mesh_layer_4),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -6446, -2807, 0, castle_inside_dl_deathplane_mesh_layer_5),
-		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -15562, 2937, 0, 0, -94, 90, castle_inside_dl_Fappy_mesh_layer_1),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -15562, 2922, 0, 0, -94, 90, castle_inside_dl_Fappy_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -12410, 907, 1572, castle_inside_dl_level1warp_mesh_layer_5),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -12410, 907, -1628, castle_inside_dl_level2warp_mesh_layer_5),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, castle_inside_dl_Roofs_mesh_layer_1),
@@ -31,6 +31,7 @@ const GeoLayout castle_inside_area_1[] = {
 				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -100, 0, geo_camera_main),
 				GEO_OPEN_NODE(),
 					GEO_BRANCH(1, castle_inside_area_1_geo),
+					
 						GEO_OPEN_NODE(),
 							GEO_ASM(  0, geo_painting_update),
 							GEO_ASM(PAINTING_ID(7, 1), geo_painting_draw),
