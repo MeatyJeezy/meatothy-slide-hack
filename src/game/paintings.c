@@ -1074,7 +1074,7 @@ void reset_painting(struct Painting *painting) {
     if (painting == &ddd_painting) {
         // Move DDD painting to initial position, in case the animation
         // that moves the painting stops during level unload.
-        painting->posX = 3456.0f;
+        //painting->posX = 3456.0f;
     }
 #endif
 }
@@ -1229,7 +1229,7 @@ Gfx *geo_painting_draw(s32 callContext, struct GraphNode *node, UNUSED void *con
 
         // Update the ddd painting before drawing
         if (group == 1 && id == PAINTING_ID_DDD) {
-            move_ddd_painting(painting, 3456.0f, 5529.6f, 20.0f);
+            //move_ddd_painting(painting, 3456.0f, 5529.6f, 20.0f);
         }
 
         // Determine if the painting is transparent

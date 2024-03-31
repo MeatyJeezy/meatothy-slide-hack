@@ -162,7 +162,8 @@ ALIGNED8 static const Texture inside_castle_seg7_texture_07016800[] = {
 
 // 0x07017000 - 0x07017800
 ALIGNED8 static const Texture inside_castle_seg7_texture_07017000[] = {
-#include "levels/castle_inside/30.rgba16.inc.c"
+//#include "levels/castle_inside/30.rgba16.inc.c"
+#include "levels/castle_inside/ripplingportal.rgba16.inc.c"
 };
 
 // 0x07017800 - 0x07018800
