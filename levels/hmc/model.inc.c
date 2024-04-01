@@ -41868,9 +41868,9 @@ Gfx hmc_dl_slide2_005_mesh_layer_1[] = {
 };
 
 Gfx hmc_dl_slide2_008_mesh_layer_1[] = {
-	gsSPDisplayList(mat_hmc_dl_cliffy),
+	gsSPDisplayList(mat_hmc_dl_veryslipperytemple),
 	gsSPDisplayList(hmc_dl_slide2_008_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_hmc_dl_cliffy),
+	gsSPDisplayList(mat_revert_hmc_dl_veryslipperytemple),
 	gsSPEndDisplayList(),
 };
 
