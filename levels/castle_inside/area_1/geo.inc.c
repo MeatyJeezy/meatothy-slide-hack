@@ -31,12 +31,6 @@ const GeoLayout castle_inside_area_1[] = {
 				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -100, 0, geo_camera_main),
 				GEO_OPEN_NODE(),
 					GEO_BRANCH(1, castle_inside_area_1_geo),
-					
-						GEO_OPEN_NODE(),
-							GEO_ASM(  0, geo_painting_update),
-							GEO_ASM(PAINTING_ID(7, 1), geo_painting_draw),
-							GEO_ASM(PAINTING_ID(6, 1), geo_painting_draw),
-						GEO_CLOSE_NODE(),
 					GEO_RENDER_OBJ(),
 					GEO_ASM(ENVFX_MODE_NONE, geo_envfx_main),
 				GEO_CLOSE_NODE(),
