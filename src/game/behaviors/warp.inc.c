@@ -13,6 +13,10 @@ void bhv_warp_loop(void) {
         }
         o->hitboxHeight = 50.0f;
     }
+    if(o->oInteractStatus != INT_STATUS_NONE && o->oBehParams2ndByte == 0x10) { // NEW the subscribe room warp
+        save_file_set_flags(SAVE_FLAG_UNLOCKED_CCM_DOOR);
+        save_file_do_save(gCurrSaveFileNum - 1);
+    }
 
     o->oInteractStatus = INT_STATUS_NONE;
 }
