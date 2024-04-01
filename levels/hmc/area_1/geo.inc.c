@@ -17,6 +17,7 @@ const GeoLayout hmc_area_1_geo[] = {
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 8187, -862, -8272, hmc_dl_Cube_004_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, hmc_dl_Cylinder_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 0, -7934, 0, hmc_dl_Cylinder_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, hmc_dl_Cylinder_002_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -26, -10795, 59, hmc_dl_darkplane_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -26, -10889, 59, hmc_dl_deathplane_mesh_layer_5),
 		GEO_DISPLAY_LIST(LAYER_ALPHA, hmc_dl_failmushroomfloor_mesh_layer_4),

@@ -3,6 +3,7 @@
 const GeoLayout ttm_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -9624, 5521, -14895, ttm_dl_Cylinder_001_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, 0, -10700, 0, ttm_dl_deathplane_mesh_layer_5),
 		GEO_DISPLAY_LIST(LAYER_ALPHA, ttm_dl_endramp_001_mesh_layer_4),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, ttm_dl_endramp_001_mesh_layer_1),
@@ -48,11 +49,6 @@ const GeoLayout ttm_area_1[] = {
 				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -100, 0, geo_camera_main),
 				GEO_OPEN_NODE(),
 					GEO_BRANCH(1, ttm_area_1_geo),
-					
-						GEO_OPEN_NODE(),
-							GEO_ASM(  0, geo_painting_update),
-							GEO_ASM(PAINTING_ID(0, 2), geo_painting_draw),
-						GEO_CLOSE_NODE(),
 					GEO_RENDER_OBJ(),
 					GEO_ASM(ENVFX_MODE_NONE, geo_envfx_main),
 				GEO_CLOSE_NODE(),
