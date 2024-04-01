@@ -26,7 +26,7 @@ const GeoLayout hmc_area_1_geo[] = {
 		GEO_DISPLAY_LIST(LAYER_ALPHA, hmc_dl_greenery_pack_001_mesh_layer_4),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_ALPHA, 0, -83, 0, hmc_dl_greenery_pack_005_mesh_layer_4),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, 7030, -434, -8266, hmc_dl_paintingwarpfloor_mesh_layer_5),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 6967, -437, -8166, hmc_dl_Pillars_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, hmc_dl_Pillars_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_ALPHA, hmc_dl_PlantA_mesh_layer_4),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, hmc_dl_ramp_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, hmc_dl_ramp_002_mesh_layer_1),
