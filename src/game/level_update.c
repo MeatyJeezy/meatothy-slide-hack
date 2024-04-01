@@ -1363,8 +1363,7 @@ s32 lvl_set_current_level(UNUSED s16 initOrUpdate, s32 levelNum) {
 	if (gCurrLevelNum == LEVEL_CASTLE) return 0;
 	if (gCurrLevelNum == LEVEL_BBH) return 0;
     gMarioState->flags |= ~MARIO_DID_BLJ; // NEW Remove BLJ flag on level load
-	if (gCurrLevelNum == LEVEL_BOB) return 0;
-	if (gCurrLevelNum == LEVEL_PSS) return 0;
+		if (gCurrLevelNum == LEVEL_PSS) return 0;
 	if (gCurrLevelNum == LEVEL_HMC) return 0;
 
     if (gCurrDemoInput != NULL || gCurrCreditsEntry != NULL || gCurrCourseNum == COURSE_NONE) {
