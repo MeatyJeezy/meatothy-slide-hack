@@ -8417,7 +8417,7 @@ Gfx ttm_dl_Leaves_mesh_layer_4_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx ttm_dl_paintingwarpsurface_mesh_layer_1_vtx_cull[8] = {
+Vtx ttm_dl_paintingwarpsurface_mesh_layer_5_vtx_cull[8] = {
 	{{ {-185, 0, 448}, 0, {0, 0}, {0, 0, 0, 0} }},
 	{{ {-185, 0, 448}, 0, {0, 0}, {0, 0, 0, 0} }},
 	{{ {-185, 0, -448}, 0, {0, 0}, {0, 0, 0, 0} }},
@@ -8428,15 +8428,15 @@ Vtx ttm_dl_paintingwarpsurface_mesh_layer_1_vtx_cull[8] = {
 	{{ {185, 0, -448}, 0, {0, 0}, {0, 0, 0, 0} }},
 };
 
-Vtx ttm_dl_paintingwarpsurface_mesh_layer_1_vtx_0[4] = {
+Vtx ttm_dl_paintingwarpsurface_mesh_layer_5_vtx_0[4] = {
 	{{ {-185, 0, 448}, 0, {-16, 1008}, {0, 127, 0, 255} }},
 	{{ {185, 0, 448}, 0, {1008, 1008}, {0, 127, 0, 255} }},
 	{{ {185, 0, -448}, 0, {1008, -16}, {0, 127, 0, 255} }},
 	{{ {-185, 0, -448}, 0, {-16, -16}, {0, 127, 0, 255} }},
 };
 
-Gfx ttm_dl_paintingwarpsurface_mesh_layer_1_tri_0[] = {
-	gsSPVertex(ttm_dl_paintingwarpsurface_mesh_layer_1_vtx_0 + 0, 4, 0),
+Gfx ttm_dl_paintingwarpsurface_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ttm_dl_paintingwarpsurface_mesh_layer_5_vtx_0 + 0, 4, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSPEndDisplayList(),
 };
@@ -20487,7 +20487,7 @@ Gfx mat_revert_ttm_dl_Leaves[] = {
 
 Gfx mat_ttm_dl_f3dlite_material[] = {
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, 0, 0, 0, 0, SHADE, 0, 0, 0, 0),
 	gsSPTexture(65535, 65535, 0, 0, 1),
     gsSPLightColor(LIGHT_1, 0xd8a050ff),
     gsSPLightColor(LIGHT_2, 0x6b4e24ff),
@@ -20733,13 +20733,13 @@ Gfx ttm_dl_Leaves_mesh_layer_4[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx ttm_dl_paintingwarpsurface_mesh_layer_1[] = {
+Gfx ttm_dl_paintingwarpsurface_mesh_layer_5[] = {
 	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(ttm_dl_paintingwarpsurface_mesh_layer_1_vtx_cull + 0, 8, 0),
+	gsSPVertex(ttm_dl_paintingwarpsurface_mesh_layer_5_vtx_cull + 0, 8, 0),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPCullDisplayList(0, 7),
 	gsSPDisplayList(mat_ttm_dl_f3dlite_material),
-	gsSPDisplayList(ttm_dl_paintingwarpsurface_mesh_layer_1_tri_0),
+	gsSPDisplayList(ttm_dl_paintingwarpsurface_mesh_layer_5_tri_0),
 	gsSPEndDisplayList(),
 };
 

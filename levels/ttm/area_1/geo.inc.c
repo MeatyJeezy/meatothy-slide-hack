@@ -20,7 +20,7 @@ const GeoLayout ttm_area_1_geo[] = {
 			GEO_DISPLAY_LIST(LAYER_OPAQUE, ttm_dl_JungleVillageBigBuilding_mesh_layer_1),
 		GEO_CLOSE_NODE(),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_ALPHA, 0, 976, 0, ttm_dl_Leaves_mesh_layer_4),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -9422, 5523, -14896, ttm_dl_paintingwarpsurface_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -9422, 5523, -14896, ttm_dl_paintingwarpsurface_mesh_layer_5),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_ALPHA, -644, 976, 345, ttm_dl_PLaceholderPaths_mesh_layer_4),
 		GEO_OPEN_NODE(),
 			GEO_DISPLAY_LIST(LAYER_OPAQUE, ttm_dl_PLaceholderPaths_mesh_layer_1),
@@ -49,6 +49,7 @@ const GeoLayout ttm_area_1[] = {
 				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -100, 0, geo_camera_main),
 				GEO_OPEN_NODE(),
 					GEO_BRANCH(1, ttm_area_1_geo),
+					
 						GEO_OPEN_NODE(),
 							GEO_ASM(  0, geo_painting_update),
 							GEO_ASM(PAINTING_ID(0, 2), geo_painting_draw),
