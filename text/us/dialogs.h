@@ -2087,7 +2087,7 @@ DEFINE_DIALOG(DIALOG_166, 1, 4, 30, 200, _("\
 \n\
 \n\
 @10EF1AFFAuthor time:\n\
-@FFDF70FF1'43'3"))
+@FFDF70FF1'36'9"))
 // changed end of course level 1
 DEFINE_DIALOG(DIALOG_167, 1, 4, 30, 200, _("\
 @F0602FFFTime required for star:\n\
@@ -2095,7 +2095,7 @@ DEFINE_DIALOG(DIALOG_167, 1, 4, 30, 200, _("\
 \n\
 \n\
 @10EF1AFFAuthor time:\n\
-@FFDF70FF0'56'7"))
+@FFDF70FF0'52'0"))
 
 DEFINE_DIALOG(DIALOG_168, 1, 5, 30, 200, _("\
 Hey! Knock it off! That's\n\

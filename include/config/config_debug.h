@@ -40,7 +40,7 @@
 /**
  * Enables debug free move (D-pad up to enter, A to exit).
  */
-#define ENABLE_DEBUG_FREE_MOVE
+//#define ENABLE_DEBUG_FREE_MOVE
 
 /**
  * Enables a custom, enhanced performance profiler. (Enables PUPPYPRINT by default in config_safeguards).
@@ -83,7 +83,7 @@
 /**
  * Includes vanilla debug functionality.
  */
- #define VANILLA_DEBUG
+ //#define VANILLA_DEBUG
 
 /**
  * Forces a crash when the game starts. Useful for debugging the crash screen.

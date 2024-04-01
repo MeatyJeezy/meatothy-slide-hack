@@ -13,7 +13,7 @@ const GeoLayout castle_inside_area_1_geo[] = {
 		GEO_CLOSE_NODE(),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, castle_inside_dl_Cylinder_001_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_ALPHA, castle_inside_dl_greenery_pack_001_mesh_layer_4),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -6446, -2807, 0, castle_inside_dl_deathplane_mesh_layer_5),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -6446, -2438, 0, castle_inside_dl_deathplane_mesh_layer_5),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -15562, 2922, 0, 0, -94, 90, castle_inside_dl_Fappy_001_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -12410, 907, 1572, castle_inside_dl_level1warp_mesh_layer_5),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, -12410, 907, -1628, castle_inside_dl_level2warp_mesh_layer_5),

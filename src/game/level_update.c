@@ -1402,11 +1402,11 @@ s32 show_secret_total() {
     s16 textOffset = 100;
     
     if (!(save_file_get_flags() & SAVE_FLAG_UNLOCKED_JRB_DOOR)) {
-        print_text(20, textOffset, "BLJ then finish");
+        print_text(20, textOffset, ">Win after a BLJ");
         textOffset -= 20;
     } 
     if (!(save_file_get_flags() & SAVE_FLAG_UNLOCKED_CCM_DOOR)) {
-        print_text(20, textOffset, "Waterfall coin trail");
+        print_text(20, textOffset, ">Waterfall coin trail");
         textOffset -= 20;
     } 
     // offset not changed, therefore all secrets discovered.
@@ -1414,7 +1414,7 @@ s32 show_secret_total() {
         print_text(20, 100, "All Secrets Discovered!");
     }
     else {
-        print_text(20, 120, "Secrets Undiscovered:");
+        print_text(20, 140, "--UNSEEN SECRETS--");
     }
         
     return TRUE;
