@@ -466,22 +466,22 @@ void render_hud_timer(void) {
     u16 timerFracSecs = ((timerValFrames - (timerMins * 1800) - (timerSecs * 30)) & 0xFFFF) / 3;
 
 #if MULTILANG
-    switch (eu_get_language()) {
-        case LANGUAGE_ENGLISH: print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(150), 185,  "TIME"); break;
-        case LANGUAGE_FRENCH:  print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(155), 185, "TEMPS"); break;
-        case LANGUAGE_GERMAN:  print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(150), 185,  "ZEIT"); break;
+    switch (eu_get_language()) { // CHANGING TO DISPLAY IN TOP LEFT
+        case LANGUAGE_ENGLISH: print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(10), HUD_TOP_Y,  "TIME"); break;
+        case LANGUAGE_FRENCH:  print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(5), HUD_TOP_Y, "TEMPS"); break;
+        case LANGUAGE_GERMAN:  print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(10), HUD_TOP_Y,  "ZEIT"); break;
     }
 #else
-    print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(150), 185, "TIME");
+    print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(10), HUD_TOP_Y, "TIME");
 #endif
 
-    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(91), 185, "%0d", timerMins);
-    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(71), 185, "%02d", timerSecs);
-    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(37), 185, "%d", timerFracSecs);
+    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(69), HUD_TOP_Y, "%0d", timerMins);//
+    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(89), HUD_TOP_Y, "%02d", timerSecs);//
+    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(123), HUD_TOP_Y, "%d", timerFracSecs);// old y was 185
 
     gSPDisplayList(gDisplayListHead++, dl_hud_img_begin);
-    render_hud_tex_lut(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(81), 32, (*hudLUT)[GLYPH_APOSTROPHE]);
-    render_hud_tex_lut(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(46), 32, (*hudLUT)[GLYPH_DOUBLE_QUOTE]);
+    render_hud_tex_lut(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(79), 8, (*hudLUT)[GLYPH_APOSTROPHE]); // old y was 32
+    render_hud_tex_lut(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(114), 8, (*hudLUT)[GLYPH_DOUBLE_QUOTE]);
     gSPDisplayList(gDisplayListHead++, dl_hud_img_end);
 }
 
