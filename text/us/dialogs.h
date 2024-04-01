@@ -211,11 +211,11 @@ Do you want to Save?\n\
 //Yes////No"))
 
 DEFINE_DIALOG(DIALOG_014, 1, 4, 30, 200, _("\
-Wow!\n\
-Wow!\n\
-@FF0000FFwow.\n\
+@FF0000FFnice.\n\
 \n\
-@A0A030FFDo you want to Save?\n\
+\n\
+\n\
+@F0F030FFDo you want to Save?\n\
 \n\
 //Hella//Nah"))
 
@@ -2091,11 +2091,11 @@ DEFINE_DIALOG(DIALOG_166, 1, 4, 30, 200, _("\
 // changed end of course level 1
 DEFINE_DIALOG(DIALOG_167, 1, 4, 30, 200, _("\
 @F0602FFFTime required for star:\n\
-@FFDF70FF1'00'0\n\
+@FFDF70FF1'05'0\n\
 \n\
 \n\
 @10EF1AFFAuthor time:\n\
-@FFDF70FFX'XX'X"))
+@FFDF70FF0'56'7"))
 
 DEFINE_DIALOG(DIALOG_168, 1, 5, 30, 200, _("\
 Hey! Knock it off! That's\n\
